@@ -15,9 +15,28 @@ export function routerConfig(
   $stateProvider
     .state('work', {
       url: '/work',
-      templateUrl: 'app/work/work.html',
-      controller: 'WorkController',
-      controllerAs: 'work'
+      views: {
+        '': {
+          templateUrl: 'app/work/work.html',
+          controller: 'WorkController',
+          controllerAs: 'work',
+        },
+        'sidebar@work': {
+          templateUrl: 'app/work/sidebar/sidebar.html',
+          controller: 'SidebarController',
+          controllerAs: 'sidebar'
+        },
+        'sketchpad@work': {
+          templateUrl: 'app/work/sketchpad/sketchpad.html',
+          controller: 'SketchpadController',
+          controllerAs: 'sketchpad'
+        },
+        'codebox@work': {
+          templateUrl: 'app/work/codebox/codebox.html',
+          controller: 'CodeboxController',
+          controllerAs: 'codebox'
+        }
+      }
     })
     .state('home', {
       url: '/home',

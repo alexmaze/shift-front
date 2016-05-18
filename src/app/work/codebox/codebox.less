@@ -1,3 +1,37 @@
+@import "../work.less";
+
 .work > .codebox {
 
+        float: left;
+        width: @right_width;
+        height: 100%;
+        font-size: 10px;
+        >.codeArea {
+            margin: 25px 20px;
+            height: calc(~"100% - 50px");
+            background: #333B3F;
+            border-radius: 5px;
+            >pre {
+                margin: 0;
+                overflow: auto;
+                height: calc(~"100% - 70px");
+            }
+            .hljs {
+                margin: 10px;
+                background: none;
+                font-family: Menlo, Consolas, Mono;
+            }
+
+            @btn_deploy_width: @right_width - 70px;
+            .deploy {
+                width: @btn_deploy_width;
+                margin: 15px;
+                height: 40px;
+                background: #44D06B;
+                border: 0;
+                border-radius: 5px;
+                font-size: 14px;
+                color: #ffffff;
+            }
+        }
 }

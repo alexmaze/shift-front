@@ -1,3 +1,33 @@
-.work > .sidebar {
+@import "../work.less";
 
+.work > .sidebar {
+        float: left;
+        width: @left_width;
+        height: 100%;
+        background: #333B3F;
+        overflow: auto;
+        .firstType {
+            margin: 10px;
+            background: rgb(72, 83, 88);
+            >.label {
+                font-size: 14px;
+                padding: 5px 10px;
+                box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+            }
+        }
+        .secondType {
+            margin: 0 5px;
+            >.label {
+                padding: 5px;
+            }
+        }
+        .thirdType {
+            border: 1px solid gray;
+            margin: 5px;
+            height: 40px;
+            >.label {
+                padding: 5px;
+                color: grey;
+            }
+        }
 }
