@@ -11,11 +11,18 @@ declare var moment: moment.MomentStatic;
 module shiftFront {
   'use strict';
 
-  angular.module('shiftFront',
-  ['ngAnimate', 'ngCookies', 'ngTouch',
-  'ngSanitize', 'ngMessages', 'ngAria',
-  'ngResource', 'ui.router', 'ui.bootstrap',
-  'toastr'])
+  let depns = ['ngAnimate',
+               'ngCookies',
+               'ngTouch',
+               'ngSanitize',
+               'ngMessages',
+               'ngAria',
+               'ngResource',
+               'ui.router',
+               'ui.bootstrap',
+               'toastr'];
+
+  angular.module('shiftFront', depns)
     .constant('malarkey', malarkey)
     .constant('moment', moment)
     .config(config)
