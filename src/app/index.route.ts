@@ -17,22 +17,22 @@ export function routerConfig(
       url: '/work',
       views: {
         '': {
-          templateUrl: 'app/work/work.html',
+          templateUrl: 'app/views/work/work.html',
           controller: 'WorkController',
           controllerAs: 'work',
         },
         'sidebar@work': {
-          templateUrl: 'app/work/sidebar/sidebar.html',
+          templateUrl: 'app/views/work/sidebar/sidebar.html',
           controller: 'SidebarController',
           controllerAs: 'sidebar'
         },
         'sketchpad@work': {
-          templateUrl: 'app/work/sketchpad/sketchpad.html',
+          templateUrl: 'app/views/work/sketchpad/sketchpad.html',
           controller: 'SketchpadController',
           controllerAs: 'sketchpad'
         },
         'codebox@work': {
-          templateUrl: 'app/work/codebox/codebox.html',
+          templateUrl: 'app/views/work/codebox/codebox.html',
           controller: 'CodeboxController',
           controllerAs: 'codebox'
         }
@@ -40,12 +40,12 @@ export function routerConfig(
     })
     .state('home', {
       url: '/home',
-      templateUrl: 'app/main/main.html',
+      templateUrl: 'app/views/main/main.html',
       controller: 'MainController',
       controllerAs: 'main'
     })
     .state('notfound', {
       url: '/404',
-      templateUrl: 'app/notfound/notfound.html'
+      templateUrl: 'app/views/notfound/notfound.html'
     });
 }
