@@ -17,10 +17,10 @@ export class SidebarController {
       primary: first.key,
       secondary: second.key,
       tertiary: third.key
-    }
+    };
   }
 
-  onDragSuccess(event, index, data) {
+  onDragSuccess(event: any, index: number, data: INodeType) {
     this.$log.debug('drag success');
   }
 

@@ -1,4 +1,5 @@
 'use strict';
+import { INodeType } from './../../../models/node.model.ts';
 
 export class SketchpadController {
 
@@ -7,7 +8,7 @@ export class SketchpadController {
     private $log: angular.ILogService) {
   }
 
-  onDrop(event, data) {
+  onDrop(event: any, data: INodeType) {
     this.$log.debug(event, data);
   }
 

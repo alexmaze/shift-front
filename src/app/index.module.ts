@@ -29,7 +29,8 @@ module shiftFront {
                'ui.router',
                'ui.bootstrap',
                'toastr',
-               'ang-drag-drop'];
+               'ang-drag-drop',
+               'ui.ace'];
 
   angular.module('shiftFront', depns)
     .constant('malarkey', malarkey)
