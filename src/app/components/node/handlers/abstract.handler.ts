@@ -1,4 +1,4 @@
-import { INodeType } from './../../../models/node.model.ts';
+import { INodeType, INode } from './../../../models/node.model.ts';
 import { IHandlerContext } from '../handlers/handler-context.model.ts';
 
 
@@ -8,10 +8,16 @@ export abstract class AbstractHandler {
   public type: INodeType;
 
   abstract doHandle(context: IHandlerContext): void;
+  abstract doBuildInputOutput(model: INode);
 
   handle(context: IHandlerContext): void {
     if (this.check(context.model.type)) {
       this.preHandle(context);
+
+      if (context.model.id.substr(0, 3) === 'TMP') {
+        this.doBuildInputOutput(context.model);
+      }
+
       this.doHandle(context);
     } else {
       if (!this.next) {

@@ -1,5 +1,5 @@
 import { AbstractHandler } from './../../abstract.handler.ts';
-import { INodeType } from './../../../../../models/node.model.ts';
+import { INodeType, INode } from './../../../../../models/node.model.ts';
 import { IHandlerContext } from '../../../handlers/handler-context.model.ts';
 
 export class NotHandler extends AbstractHandler {
@@ -17,6 +17,30 @@ export class NotHandler extends AbstractHandler {
     };
   }
 
+  doBuildInputOutput(model: INode) {
+    // console.debug('build input output');
+    model.inputs = [
+      {
+        port: 0,
+        type: undefined,
+        refId: undefined,
+        refOutputPort: undefined,
+        constValue: undefined,
+        value: undefined,
+        valueType: 'boolean',
+        sub: undefined
+      }
+    ];
+    model.outputs = [
+      {
+        port: 0,
+        value: undefined,
+        valueType: 'boolean'
+      }
+    ];
+  }
+
+
   doHandle(context: IHandlerContext): void {
     let { logger } = context;
     logger.debug('handler not node');
@@ -29,7 +53,7 @@ export class NotHandler extends AbstractHandler {
 
     // input port 1
     instance.addEndpoint(elem[0], {
-      uuid: model.id + '-in-0',
+      uuid: model.id + '-input-0',
       anchor: [0.1, 0.7, 0, 0],
       cssClass: 'NodePort',
       endpoint: 'Dot',
@@ -39,7 +63,7 @@ export class NotHandler extends AbstractHandler {
     });
     // output port 1
     instance.addEndpoint(elem[0], {
-      uuid: model.id + '-out-0',
+      uuid: model.id + '-output-0',
       anchor: [0.9, 0.7, 0, 0],
       cssClass: 'NodePort',
       endpoint: 'Dot',

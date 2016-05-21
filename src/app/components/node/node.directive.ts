@@ -21,7 +21,7 @@ export function shiftNode(
     },
     templateUrl: 'app/components/node/node.template.html',
     link: function (scope: IShiftNodeScope, element: any, attr: any) {
-      $log.debug(scope.shiftNodeModel);
+      // $log.debug(scope.shiftNodeModel);
       // 设置
       nodeHandlerService.handle({
         elem: element.find('.shift-node'),

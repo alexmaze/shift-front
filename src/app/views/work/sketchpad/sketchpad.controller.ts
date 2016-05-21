@@ -1,7 +1,7 @@
 'use strict';
-import { INodeType, INode } from './../../../models/node.model.ts';
+import { INodeType, INode, INodeInput } from './../../../models/node.model.ts';
 import { IWorkScope } from './../../../models/work.scope.ts';
-
+import * as _ from 'lodash';
 
 declare let jsPlumb: any;
 
@@ -15,12 +15,17 @@ export class SketchpadController {
     private $log: angular.ILogService,
     private $scope: { $parent: IWorkScope }) {
 
-    let _this = this;
     this.model = $scope.$parent.model;
 
-    jsPlumb.bind('ready', function () {
-      _this.$log.debug('jsplumb ready');
+    this.bind();
 
+  }
+
+  bind() {
+
+    jsPlumb.bind('ready', () => {
+      this.$log.debug('jsplumb ready');
+      // 新建jsplumb实例
       var instance = jsPlumb.getInstance({
         Connector: ['Bezier', { curviness: 50 }],
         DragOptions: { cursor: 'pointer', zIndex: 2000 },
@@ -32,10 +37,12 @@ export class SketchpadController {
         EndpointHoverStyle: { fillStyle: '#7073EB' },
         Container: 'sketchpad_desk'
       });
-      _this.jsPlumbInstance = instance;
+      this.jsPlumbInstance = instance;
+
+      // 绑定
+      instance.bind('connection', this.onConnectionFactory(this));
 
     });
-
   }
 
   onDrop(event: any, data: INodeType) {
@@ -55,6 +62,37 @@ export class SketchpadController {
       outputs: []
     });
 
+  }
+
+  onConnectionFactory(context: SketchpadController) {
+    return function (conn: any, event: MouseEvent) {
+      // context.$log.debug(context.model, conn);
+      let source = parseEndpoint(conn.sourceEndpoint.getUuid());
+      let target = parseEndpoint(conn.targetEndpoint.getUuid());
+      // context.$log.debug(source, target);
+
+      // let sourceModal = _.find(context.model, (item: INode) => { return item.id === source.id });
+      let targetModal = _.find(context.model, (item: INode) => { return item.id === target.id; });
+      // context.$log.debug(sourceModal, targetModal);
+
+      /* tslint:disable */
+      let targetInput = _.find(targetModal.inputs, (input: INodeInput) => { return input.port == target.portIndex; });
+      // context.$log.debug(targetInput);
+
+      targetInput.type = 'ref';
+      targetInput.refId = source.id;
+      targetInput.refOutputPort = source.portIndex;
+
+      // ---------------------------------------------
+      function parseEndpoint(uuid: string) {
+        let uuidArr = uuid.split('-');
+        return {
+          id: uuidArr[0],
+          portType: uuidArr[1],
+          portIndex: uuidArr[2]
+        };
+      }
+    };
   }
 
 }

@@ -24,7 +24,7 @@ export class SidebarController {
   }
 
   onDragSuccess(event: any, index: number, data: INodeType) {
-    this.$log.debug('drag success');
+    // this.$log.debug('drag success');
   }
 
 }

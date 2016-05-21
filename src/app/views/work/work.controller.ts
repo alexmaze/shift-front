@@ -15,7 +15,7 @@ export class WorkController {
     $scope.model = this.model;
 
     $scope.$on('deploy', () => {
-      this.$log.debug(this.model);
+      this.$log.log(this.model);
     });
   }
 
