@@ -91,6 +91,19 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
     key: 'device',
     label: 'Device Nodes',
     index: 1,
-    sub: []
+    sub: [
+      {
+        key: 'switch',
+        label: 'Switch',
+        index: 0,
+        sub: [
+          {
+            key: 'snap',
+            label: 'Switch',
+            index: 0
+          }
+        ]
+      }
+    ]
   }
 ];

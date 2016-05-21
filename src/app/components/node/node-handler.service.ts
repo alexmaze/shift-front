@@ -11,6 +11,10 @@ import { ArithmeticHandler } from './handlers/virtual/operator/arithmetic.handle
 import { BitwizeHandler } from './handlers/virtual/operator/bitwise.handler.ts';
 import { CompoundHandler } from './handlers/virtual/operator/compound.handler.ts';
 
+
+import { SnapSwitchHandler } from './handlers/device/switch/snap-switch.handler.ts';
+
+
 export class NodeHandlerService {
 
   public first: AbstractHandler;
@@ -25,6 +29,8 @@ export class NodeHandlerService {
         .newHandler(new ArithmeticHandler())
         .newHandler(new BitwizeHandler())
         .newHandler(new CompoundHandler())
+
+        .newHandler(new SnapSwitchHandler())
         ;
   }
 
