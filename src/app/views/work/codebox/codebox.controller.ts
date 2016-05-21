@@ -7,7 +7,8 @@ export class CodeboxController {
 
   /* @ngInject */
   constructor(private $log: angular.ILogService,
-    private $interval: angular.IIntervalService) {
+    private $interval: angular.IIntervalService,
+    private $scope: angular.IScope) {
 
     this.aceOption = {
 
@@ -18,8 +19,9 @@ export class CodeboxController {
       wrap: true
     };
 
+    // test
     let codeArr = [];
-    codeArr.push('var Sketchpad = require(\'Shift.Sketchpad\');\n');
+    codeArr.push('var Sketchpad = require(\'Shift.Sketchpad\');\n\n');
     codeArr.push('function WorkBench() {\n');
     codeArr.push('  this.init();\n');
     codeArr.push('  this.showcase = new Showcase();\n');
@@ -31,6 +33,7 @@ export class CodeboxController {
 
   deploy() {
     this.$log.debug('Deploy Code!~');
+    this.$scope.$emit('deploy');
   }
 
 }

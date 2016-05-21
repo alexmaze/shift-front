@@ -15,8 +15,11 @@ export class SidebarController {
   getNodeType(first: INodeTypeLeaf, second: INodeTypeLeaf, third: INodeTypeLeaf): INodeType {
     return {
       primary: first.key,
+      primaryLabel: first.label,
       secondary: second.key,
-      tertiary: third.key
+      secondaryLabel: second.label,
+      tertiary: third.key,
+      tertiaryLabel: third.label
     };
   }
 

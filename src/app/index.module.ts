@@ -12,6 +12,8 @@ import { WorkController } from './views/work/work.controller.ts';
 import { SidebarController } from './views/work/sidebar/sidebar.controller.ts';
 import { SketchpadController } from './views/work/sketchpad/sketchpad.controller.ts';
 import { CodeboxController } from './views/work/codebox/codebox.controller.ts';
+// ---------------------------------------------------------------------------
+import { shiftNode } from './components/node/node.directive.ts';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -47,5 +49,7 @@ module shiftFront {
     .controller('SidebarController', SidebarController)
     .controller('SketchpadController', SketchpadController)
     .controller('CodeboxController', CodeboxController)
+
+    .directive('shiftNode', shiftNode)
     ;
 }

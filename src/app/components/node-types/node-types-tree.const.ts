@@ -13,7 +13,7 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
     index: 0,
     sub: [
       {
-        key: 'logic: ',
+        key: 'logic',
         label: 'Logic Patches',
         index: 0,
         sub: [

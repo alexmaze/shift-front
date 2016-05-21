@@ -1,0 +1,79 @@
+.shift-node {
+    position: absolute;
+    width: 90px;
+    height: 60px;
+    border: 0;
+    background-color: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 1;
+    .title {
+        height: 20px;
+        background-color: #ec510e;
+        color: #fffefe;
+        font: 700 9px / 20px Helvetica;
+        border: 0px;
+        padding: 0 0 0 7px;
+        cursor: default;
+    }
+    .content {
+        position: relative;
+    }
+}
+
+// 虚拟Node
+.shift-node-virtual {
+  // 逻辑Node
+  &.shift-node-logic {
+
+    width: 90px;
+    height: 60px;
+    .content {
+      height: 40px;
+    }
+
+    &.shift-node-and {
+
+    }
+    &.shift-node-or {
+
+    }
+    &.shift-node-not {
+      height: 46px;
+      .content {
+        height: 26px;
+      }
+    }
+    &.shift-node-conditional {
+
+    }
+  }
+}
+
+.jsplumb-endpoint {
+    width: 8px;
+    height: 8px;
+    z-index: 2;
+    svg {
+        width: 8px;
+        height: 8px;
+        circle {
+            fill: #CFCFCF;
+            stroke: #090909;
+            stroke-width: 1;
+            cx: 4;
+            cy: 4;
+            r: 3;
+        }
+    }
+    &.jsplumb-endpoint-connected {
+        svg circle {
+            fill: #2EFDF6;
+        }
+    }
+    &.jsplumb-hover {
+        svg circle {
+            fill: rgb(220, 220, 220);
+        }
+    }
+}

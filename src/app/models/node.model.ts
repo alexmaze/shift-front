@@ -12,7 +12,7 @@ export interface INode {
   // 某些类型的patch需要填写operation, ==/!=/>/</+/-/*...
   operation: string;
   // 硬件地址
-  adress: string;
+  address: string;
   // 用户设置label
   label: string;
   // 图形坐标
@@ -24,11 +24,14 @@ export interface INode {
 export interface INodeType {
   // virtual/device
   primary: string;
+  primaryLabel?: string;
   // [virtual]: logic/control/operator/math/utility/data
   secondary: string;
+  secondaryLabel?: string;
   // [[logic]]: and/or/not/condition
   // [[...]]
   tertiary: string;
+  tertiaryLabel?: string;
 }
 
 export interface INodePosition {

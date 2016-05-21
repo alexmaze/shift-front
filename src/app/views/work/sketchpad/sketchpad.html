@@ -1,3 +1,10 @@
-<div class="sketchpad" ui-on-Drop="sketchpad.onDrop($event,$data)">
-  <div >{{work.getTitle()}}</div>
+<div class="sketchpad" ng-if="sketchpad.jsPlumbInstance">
+  <div id="sketchpad_desk" ui-on-Drop="sketchpad.onDrop($event,$data)">
+    <shift-node
+      ng-repeat="node in sketchpad.model track by $index"
+      shift-node-model="node"
+      shift-node-jsplumb="sketchpad.jsPlumbInstance"
+      ></shift-node>
+
+  </div>
 </div>
