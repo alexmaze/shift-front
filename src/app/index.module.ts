@@ -6,6 +6,9 @@ import { runBlock } from './index.run.ts';
 // ---------------------------------------------------------------------------
 import { NODE_TYPES_TREE } from './components/node-types/node-types-tree.const.ts';
 // ---------------------------------------------------------------------------
+import { NodeHandlerService } from './components/node/node-handler.service.ts';
+// ---------------------------------------------------------------------------
+
 import { MainController } from './views/main/main.controller.ts';
 
 import { WorkController } from './views/work/work.controller.ts';
@@ -51,5 +54,7 @@ module shiftFront {
     .controller('CodeboxController', CodeboxController)
 
     .directive('shiftNode', shiftNode)
+
+    .service('nodeHandlerService', NodeHandlerService)
     ;
 }
