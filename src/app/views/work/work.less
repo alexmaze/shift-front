@@ -7,4 +7,21 @@
     height: 100%;
     background: #263238;
     overflow: auto;
+    min-width: 600px;
+
+    .sidebar-wrapper {
+        height: 100%;
+        float: left;
+        width: @left_width;
+    }
+    .sketchpad-wrapper {
+        height: 100%;
+        float: left;
+        width: calc(~"100% - @{left_width} - @{right_width}");
+    }
+    .codebox-wrapper {
+        height: 100%;
+        float: left;
+        width: @right_width;
+    }
 }

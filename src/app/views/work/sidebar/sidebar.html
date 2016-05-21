@@ -1,3 +1,23 @@
 <div class="sidebar">
-  sidebar
+  <div class="firstType" ng-repeat="first in sidebar.NODE_TYPES_TREE track by $index">
+    <div class="label">{{first.label}}</div>
+    <div class="content">
+
+      <div class="secondType" ng-repeat="second in first.sub">
+        <div class="label">{{second.label}}</div>
+        <div class="content">
+
+          <div class="thirdType"
+               ng-repeat="third in second.sub"
+               ui-draggable="true"
+               drag="sidebar.getNodeType(first, second, third)"
+               on-drop-success="sidebar.onDragSuccess($event, $index, third)">
+            <div class="label">{{third.label}}</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,11 +1,17 @@
-@import "../work.less";
 
-.work > .sidebar {
-        float: left;
-        width: @left_width;
+.work .sidebar {
         height: 100%;
         background: #333B3F;
         overflow: auto;
+
+        .label {
+          display: block;
+          border-radius: 0;
+          line-height: inherit;
+          text-align: left;
+          font-weight: normal;
+        }
+
         .firstType {
             margin: 10px;
             background: rgb(72, 83, 88);

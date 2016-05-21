@@ -3,9 +3,9 @@
 import { config } from './index.config.ts';
 import { routerConfig } from './index.route.ts';
 import { runBlock } from './index.run.ts';
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 import { NODE_TYPES_TREE } from './components/node-types/node-types-tree.const.ts';
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 import { MainController } from './views/main/main.controller.ts';
 
 import { WorkController } from './views/work/work.controller.ts';
@@ -28,7 +28,8 @@ module shiftFront {
                'ngResource',
                'ui.router',
                'ui.bootstrap',
-               'toastr'];
+               'toastr',
+               'ang-drag-drop'];
 
   angular.module('shiftFront', depns)
     .constant('malarkey', malarkey)

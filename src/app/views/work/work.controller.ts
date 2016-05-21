@@ -2,7 +2,13 @@
 
 export class WorkController {
 
-  constructor() {
+  public title: string;
+
+  /* @ngInject */
+  constructor(
+    private $log: angular.ILogService) {
+      this.title = 'haha';
   }
+
 
 }

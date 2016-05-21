@@ -19,7 +19,7 @@ export function routerConfig(
         '': {
           templateUrl: 'app/views/work/work.html',
           controller: 'WorkController',
-          controllerAs: 'work',
+          controllerAs: 'work'
         },
         'sidebar@work': {
           templateUrl: 'app/views/work/sidebar/sidebar.html',
