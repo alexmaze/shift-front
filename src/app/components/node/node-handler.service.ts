@@ -1,7 +1,10 @@
 import { AbstractHandler } from './handlers/abstract.handler.ts';
 import { IHandlerContext } from './handlers/handler-context.model.ts';
+
 import { AndHandler } from './handlers/virtual/logic/and.handler.ts';
 import { OrHandler } from './handlers/virtual/logic/or.handler.ts';
+import { NotHandler } from './handlers/virtual/logic/not.handler.ts';
+import { ConditionalHandler } from './handlers/virtual/logic/conditional.handler.ts';
 
 
 export class NodeHandlerService {
@@ -11,7 +14,10 @@ export class NodeHandlerService {
 
   constructor() {
     this.newHandler(new AndHandler())
-        .newHandler(new OrHandler());
+        .newHandler(new OrHandler())
+        .newHandler(new NotHandler())
+        .newHandler(new ConditionalHandler())
+        ;
   }
 
   handle(context: IHandlerContext) {

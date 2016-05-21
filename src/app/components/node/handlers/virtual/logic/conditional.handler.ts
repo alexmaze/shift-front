@@ -2,7 +2,7 @@ import { AbstractHandler } from './../../abstract.handler.ts';
 import { INodeType } from './../../../../../models/node.model.ts';
 import { IHandlerContext } from '../../../handlers/handler-context.model.ts';
 
-export class AndHandler extends AbstractHandler {
+export class ConditionalHandler extends AbstractHandler {
 
   public next: AbstractHandler;
   public type: INodeType;
@@ -13,13 +13,13 @@ export class AndHandler extends AbstractHandler {
     this.type = {
       primary: 'virtual',
       secondary: 'logic',
-      tertiary: 'and'
+      tertiary: 'conditional'
     };
   }
 
   doHandle(context: IHandlerContext): void {
     let { logger } = context;
-    logger.debug('handler and node');
+    logger.debug('handler conditional node');
 
     this.addEndPoints(context);
   }
