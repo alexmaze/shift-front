@@ -7,23 +7,26 @@
     border-radius: 6px;
     overflow: hidden;
     z-index: 1;
-    .title {
+    >.title {
         height: 20px;
         background-color: #ec510e;
         color: #fffefe;
-        font: 700 9px / 20px Helvetica;
+        font: normal 9px / 20px Helvetica;
         border: 0px;
         padding: 0 0 0 7px;
         cursor: default;
     }
     .content {
         position: relative;
+        height: 40px;
+        color: black;
+        font: normal 9px Helvetica;
     }
 }
 
-// 虚拟Node
+// 虚拟 Node
 .shift-node-virtual {
-  // 逻辑Node
+  // logic node
   &.shift-node-logic {
 
     width: 90px;
@@ -46,6 +49,26 @@
     }
     &.shift-node-conditional {
 
+    }
+  }
+  // operate nodes
+  &.shift-node-operator {
+    >.title {
+      background-color: #0088F9;
+    }
+    .input, .output {
+      position: absolute;
+    }
+    .input-0 {
+      top: 8px;
+      left: 17px;
+    }
+    .input-1 {
+      top: 19px;
+      left: 17px;
+    }
+    &.shift-node-arithmetic {
+      // background: black;
     }
   }
 }

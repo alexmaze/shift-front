@@ -64,6 +64,9 @@ export interface INodeInput {
   // 子输入，主要用于模块节点，输入有其他参数
   sub: INodeInput[];
 
+  _label?: string;
+  _connId?: string;
+
 }
 
 export interface INodeOutput {

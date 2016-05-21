@@ -2,7 +2,7 @@ import { AbstractHandler } from './../../abstract.handler.ts';
 import { INodeType, INode } from './../../../../../models/node.model.ts';
 import { IHandlerContext } from '../../../handlers/handler-context.model.ts';
 
-export class OrHandler extends AbstractHandler {
+export class ArithmeticHandler extends AbstractHandler {
 
   public next: AbstractHandler;
   public type: INodeType;
@@ -12,10 +12,11 @@ export class OrHandler extends AbstractHandler {
 
     this.type = {
       primary: 'virtual',
-      secondary: 'logic',
-      tertiary: 'or'
+      secondary: 'operator',
+      tertiary: 'arithmetic'
     };
   }
+
 
   doBuildInputOutput(model: INode) {
     // console.debug('build input output');
@@ -32,12 +33,12 @@ export class OrHandler extends AbstractHandler {
       },
       {
         port: 1,
-        type: undefined,
+        type: 'const',
         refId: undefined,
         refOutputPort: undefined,
-        constValue: undefined,
-        value: undefined,
-        valueType: 'boolean',
+        constValue: 0,
+        value: 0,
+        valueType: 'integer',
         sub: undefined
       }
     ];
@@ -45,17 +46,23 @@ export class OrHandler extends AbstractHandler {
       {
         port: 0,
         value: undefined,
-        valueType: 'boolean'
+        valueType: 'boolean | integer'
       }
     ];
   }
 
-
   doHandle(context: IHandlerContext): void {
-    let { logger } = context;
-    logger.debug('handler or node');
+
+    let { logger, scope, model } = context;
+    logger.debug('handler arithmetic node');
 
     this.addEndPoints(context);
+
+    // setTimeout((e) => {
+    //   model.inputs[1].type = 'ref';
+    //   logger.debug('changed');
+    //   scope.$apply();
+    // }, 5000);
   }
 
   addEndPoints(context: IHandlerContext) {

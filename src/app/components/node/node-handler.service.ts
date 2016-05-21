@@ -7,6 +7,10 @@ import { NotHandler } from './handlers/virtual/logic/not.handler.ts';
 import { ConditionalHandler } from './handlers/virtual/logic/conditional.handler.ts';
 
 
+import { ArithmeticHandler } from './handlers/virtual/operator/arithmetic.handler.ts';
+import { BitwizeHandler } from './handlers/virtual/operator/bitwise.handler.ts';
+import { CompoundHandler } from './handlers/virtual/operator/compound.handler.ts';
+
 export class NodeHandlerService {
 
   public first: AbstractHandler;
@@ -17,6 +21,10 @@ export class NodeHandlerService {
         .newHandler(new OrHandler())
         .newHandler(new NotHandler())
         .newHandler(new ConditionalHandler())
+
+        .newHandler(new ArithmeticHandler())
+        .newHandler(new BitwizeHandler())
+        .newHandler(new CompoundHandler())
         ;
   }
 

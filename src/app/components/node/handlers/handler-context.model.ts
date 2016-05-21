@@ -5,4 +5,5 @@ export interface IHandlerContext {
   model: INode;
   instance: any;
   logger: angular.ILogService;
+  scope: any
 }

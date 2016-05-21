@@ -16,9 +16,7 @@ export class SketchpadController {
     private $scope: { $parent: IWorkScope }) {
 
     this.model = $scope.$parent.model;
-
     this.bind();
-
   }
 
   bind() {
@@ -40,7 +38,9 @@ export class SketchpadController {
       this.jsPlumbInstance = instance;
 
       // 绑定
-      instance.bind('connection', this.onConnectionFactory(this));
+      instance.bind('connection', this.onConnectionEstablishedFactory(this));
+      instance.bind('connectionDetached', this.onConnectionDetachedFactory(this));
+      instance.bind('connectionMoved', this.onConnectionMovedFactory(this));
 
     });
   }
@@ -64,35 +64,104 @@ export class SketchpadController {
 
   }
 
-  onConnectionFactory(context: SketchpadController) {
+  onConnectionEstablishedFactory(context: SketchpadController) {
     return function (conn: any, event: MouseEvent) {
-      // context.$log.debug(context.model, conn);
-      let source = parseEndpoint(conn.sourceEndpoint.getUuid());
-      let target = parseEndpoint(conn.targetEndpoint.getUuid());
-      // context.$log.debug(source, target);
+      context.$log.debug('connection established');
 
-      // let sourceModal = _.find(context.model, (item: INode) => { return item.id === source.id });
-      let targetModal = _.find(context.model, (item: INode) => { return item.id === target.id; });
+      let source = context.parseEndpoint(conn.sourceEndpoint.getUuid());
+      let target = context.parseEndpoint(conn.targetEndpoint.getUuid());
+      context.$log.debug(source, target);
+      context.establishedConn(source, target, context.model, conn.connection);
+    };
+  }
+
+  onConnectionDetachedFactory(context: SketchpadController) {
+    return function (conn: any, event: MouseEvent) {
+      context.$log.debug('connection detached');
+
+      let source = context.parseEndpoint(conn.sourceEndpoint.getUuid());
+      let target = context.parseEndpoint(conn.targetEndpoint.getUuid());
+      context.$log.debug(source, target);
+      context.detachConn(source, target, context.model, conn.connection);
+    };
+  }
+
+  onConnectionMovedFactory(context: SketchpadController) {
+    return function (conn: any, event: MouseEvent) {
+      context.$log.debug('connection moved', conn);
+
+      let originalSource = context.parseEndpoint(conn.originalSourceEndpoint.getUuid());
+      let originalTarget = context.parseEndpoint(conn.originalTargetEndpoint.getUuid());
+      context.$log.debug(originalSource, originalTarget);
+      context.detachConn(originalSource, originalTarget, context.model, conn.connection);
+
+      let newSource = context.parseEndpoint(conn.newSourceEndpoint.getUuid());
+      let newTarget = context.parseEndpoint(conn.newTargetEndpoint.getUuid());
+      context.$log.debug(newSource, newTarget);
+      context.establishedConn(newSource, newTarget, context.model, conn.connection);
+
+    };
+  }
+
+  parseEndpoint(uuid: string): IEndpoint {
+    let uuidArr = uuid.split('-');
+    return {
+      id: uuidArr[0],
+      portType: uuidArr[1],
+      portIndex: uuidArr[2]
+    };
+  }
+
+  detachConn(source: IEndpoint, target: IEndpoint, model: INode[], connection: any) {
+      let sourceModal = _.find(model, (item: INode) => { return item.id === source.id; });
+      let targetModal = _.find(model, (item: INode) => { return item.id === target.id; });
       // context.$log.debug(sourceModal, targetModal);
 
       /* tslint:disable */
       let targetInput = _.find(targetModal.inputs, (input: INodeInput) => { return input.port == target.portIndex; });
       // context.$log.debug(targetInput);
 
+      if (targetInput._connId != connection.id) {
+        return;
+      }
+
+      // 清除连接
+      targetInput.type = undefined;
+      targetInput.refId = undefined;
+      targetInput.refOutputPort = undefined;
+      targetInput._connId = undefined;
+  }
+
+  establishedConn(source: IEndpoint, target: IEndpoint, model: INode[], connection: any) {
+      let sourceModal = _.find(model, (item: INode) => { return item.id === source.id });
+      let targetModal = _.find(model, (item: INode) => { return item.id === target.id; });
+      // context.$log.debug(sourceModal, targetModal);
+
+      /* tslint:disable */
+      let targetInput = _.find(targetModal.inputs, (input: INodeInput) => { return input.port == target.portIndex; });
+      // context.$log.debug(targetInput);
+
+      if (targetInput._connId) {
+        if (targetInput._connId == connection.id) {
+          return;
+        } else {
+          jsPlumb.detach(connection);
+          return;
+        }
+      }
+
+      // 建立连接
       targetInput.type = 'ref';
       targetInput.refId = source.id;
       targetInput.refOutputPort = source.portIndex;
-
-      // ---------------------------------------------
-      function parseEndpoint(uuid: string) {
-        let uuidArr = uuid.split('-');
-        return {
-          id: uuidArr[0],
-          portType: uuidArr[1],
-          portIndex: uuidArr[2]
-        };
-      }
-    };
+      targetInput._connId = connection.id;
   }
 
+}
+
+
+interface IEndpoint {
+  id: string;
+  portType: string;
+  portIndex: string | number;
 }

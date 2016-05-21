@@ -49,7 +49,23 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
         key: 'operator',
         label: 'Operator Patches',
         index: 2,
-        sub: []
+        sub: [
+          {
+            key: 'arithmetic',
+            label: 'Arithmetic',
+            index: 0
+          },
+          {
+            key: 'compound',
+            label: 'Compound',
+            index: 1
+          },
+          {
+            key: 'bitwise',
+            label: 'bitwise',
+            index: 2
+          }
+        ]
       },
       {
         key: 'math',

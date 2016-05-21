@@ -54,7 +54,7 @@ export class NotHandler extends AbstractHandler {
     // input port 1
     instance.addEndpoint(elem[0], {
       uuid: model.id + '-input-0',
-      anchor: [0.1, 0.7, 0, 0],
+      anchor: [0.1, 0.71, 0, 0],
       cssClass: 'NodePort',
       endpoint: 'Dot',
       maxConnections: -1,
@@ -64,7 +64,7 @@ export class NotHandler extends AbstractHandler {
     // output port 1
     instance.addEndpoint(elem[0], {
       uuid: model.id + '-output-0',
-      anchor: [0.9, 0.7, 0, 0],
+      anchor: [0.9, 0.71, 0, 0],
       cssClass: 'NodePort',
       endpoint: 'Dot',
       maxConnections: -1,

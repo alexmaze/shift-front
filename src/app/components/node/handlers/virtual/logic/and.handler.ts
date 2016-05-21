@@ -65,7 +65,7 @@ export class AndHandler extends AbstractHandler {
     // input port 1
     instance.addEndpoint(elem, {
       uuid: model.id + '-input-0',
-      anchor: [0.1, 0.53, 0, 0],
+      anchor: [0.1, 0.56, 0, 0],
       cssClass: 'NodePort',
       endpoint: 'Dot',
       maxConnections: -1,
@@ -75,7 +75,7 @@ export class AndHandler extends AbstractHandler {
     // input port 2
     instance.addEndpoint(elem, {
       uuid: model.id + '-input-1',
-      anchor: [0.1, 0.74, 0, 0],
+      anchor: [0.1, 0.76, 0, 0],
       cssClass: 'NodePort',
       endpoint: 'Dot',
       maxConnections: -1,
@@ -85,7 +85,7 @@ export class AndHandler extends AbstractHandler {
     // output port 1
     instance.addEndpoint(elem, {
       uuid: model.id + '-output-0',
-      anchor: [0.9, 0.53, 0, 0],
+      anchor: [0.9, 0.56, 0, 0],
       cssClass: 'NodePort',
       endpoint: 'Dot',
       maxConnections: -1,

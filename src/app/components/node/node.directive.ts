@@ -27,8 +27,10 @@ export function shiftNode(
         elem: element.find('.shift-node'),
         model: scope.shiftNodeModel,
         instance: scope.shiftNodeJsplumb,
-        logger: $log
+        logger: $log,
+        scope: scope
       });
+
     }
   };
 }
