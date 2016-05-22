@@ -13,8 +13,11 @@
         </div>
         <div class="content" uib-collapse="!second.isCollapsed">
 
-          <div class="thirdType" ng-repeat="third in second.sub" ui-draggable="true" drag="sidebar.getNodeType(first, second, third)"
-            on-drop-success="sidebar.onDragSuccess($event, $index, third)">
+          <div class="thirdType" ng-repeat="third in second.sub"
+               ui-draggable="true"
+               drag="sidebar.getNodeType(first, second, third)"
+               on-drop-success="sidebar.onDragSuccess($event, $index, third)"
+               drag-channel="WORK">
             <div class="label">{{third.label}}</div>
           </div>
 

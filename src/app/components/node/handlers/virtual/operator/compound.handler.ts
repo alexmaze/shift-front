@@ -59,6 +59,13 @@ export class CompoundHandler extends AbstractHandler {
     this.addEndPoints(context);
   }
 
+  destroyFactory(context: IHandlerContext): Function {
+    return (event: any) => {
+      context.logger.debug('destroy compound', context, event);
+      context.instance.remove(context.elem);
+    };
+  }
+
   addEndPoints(context: IHandlerContext) {
     let { instance, elem, model } = context;
 

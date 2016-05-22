@@ -113,7 +113,7 @@ export class SketchpadController {
   }
 
   detachConn(source: IEndpoint, target: IEndpoint, model: INode[], connection: any) {
-      let sourceModal = _.find(model, (item: INode) => { return item.id === source.id; });
+      // let sourceModal = _.find(model, (item: INode) => { return item.id === source.id; });
       let targetModal = _.find(model, (item: INode) => { return item.id === target.id; });
       // context.$log.debug(sourceModal, targetModal);
 

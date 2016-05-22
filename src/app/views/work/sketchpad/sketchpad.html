@@ -1,5 +1,7 @@
 <div class="sketchpad" ng-if="sketchpad.jsPlumbInstance">
-  <div id="sketchpad_desk" ui-on-Drop="sketchpad.onDrop($event,$data)">
+  <div id="sketchpad_desk"
+       ui-on-Drop="sketchpad.onDrop($event,$data)"
+       drop-channel="WORK">
     <shift-node
       ng-repeat="node in sketchpad.model track by node.id"
       shift-node-model="node"

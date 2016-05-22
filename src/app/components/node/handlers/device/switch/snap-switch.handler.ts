@@ -36,6 +36,13 @@ export class SnapSwitchHandler extends AbstractHandler {
     this.extraRender(context);
   }
 
+  destroyFactory(context: IHandlerContext): Function {
+    return (event: any) => {
+      context.logger.debug('destroy snap switch', context, event);
+      context.instance.remove(context.elem);
+    };
+  }
+
   extraRender(context: IHandlerContext) {
     // 点击切换图片
     let { elem } = context;

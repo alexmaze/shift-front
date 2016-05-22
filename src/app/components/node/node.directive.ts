@@ -4,6 +4,7 @@ import { NodeHandlerService } from './node-handler.service.ts';
 interface IShiftNodeScope extends angular.IScope {
   shiftNodeModel: INode;
   shiftNodeJsplumb: any;
+  onDrop: Function;
 }
 
 /* @ngInject */
@@ -22,9 +23,12 @@ export function shiftNode(
     templateUrl: 'app/components/node/node.template.html',
     link: function (scope: IShiftNodeScope, element: any, attr: any) {
       // $log.debug(scope.shiftNodeModel);
+
+      let elem = element.find('.shift-node');
+
       // 设置
       nodeHandlerService.handle({
-        elem: element.find('.shift-node'),
+        elem: elem,
         model: scope.shiftNodeModel,
         instance: scope.shiftNodeJsplumb,
         logger: $log,

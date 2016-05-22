@@ -53,7 +53,7 @@ export class ArithmeticHandler extends AbstractHandler {
 
   doHandle(context: IHandlerContext): void {
 
-    let { logger, scope, model } = context;
+    let { logger } = context;
     logger.debug('handler arithmetic node');
 
     this.addEndPoints(context);
@@ -63,6 +63,13 @@ export class ArithmeticHandler extends AbstractHandler {
     //   logger.debug('changed');
     //   scope.$apply();
     // }, 5000);
+  }
+
+  destroyFactory(context: IHandlerContext): Function {
+    return (event: any) => {
+      context.logger.debug('destroy arithmetic', context, event);
+      context.instance.remove(context.elem);
+    };
   }
 
   addEndPoints(context: IHandlerContext) {

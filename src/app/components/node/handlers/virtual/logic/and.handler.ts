@@ -60,10 +60,10 @@ export class AndHandler extends AbstractHandler {
   }
 
   destroyFactory(context: IHandlerContext): Function {
-    return (event) => {
-      console.log('destroy and', context, event);
+    return (event: any) => {
+      context.logger.debug('destroy and', context, event);
       context.instance.remove(context.elem);
-    }
+    };
   }
 
   addEndPoints(context: IHandlerContext) {

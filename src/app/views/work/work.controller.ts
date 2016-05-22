@@ -2,7 +2,7 @@
 import { INode } from './../../models/node.model.ts';
 import { IWorkScope } from './../../models/work.scope.ts';
 
-declare let window: {workScope: any}
+declare let window: { workScope: any };
 
 export class WorkController {
 
@@ -16,10 +16,11 @@ export class WorkController {
     this.model = [];
     $scope.model = this.model;
 
-    // TODO 测试专用
+    // todo 测试专用
     window.workScope = $scope;
 
     $scope.$on('deploy', () => {
+      // todo 先重新获取位置！！！
       this.$log.log(this.model);
     });
   }
