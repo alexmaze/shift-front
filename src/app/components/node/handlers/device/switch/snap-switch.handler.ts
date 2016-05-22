@@ -39,6 +39,10 @@ export class SnapSwitchHandler extends AbstractHandler {
   destroyFactory(context: IHandlerContext): Function {
     return (event: any) => {
       context.logger.debug('destroy snap switch', context, event);
+
+      // 解绑额外添加的事件
+      context.elem.find('.content').unbind('click');
+
       context.instance.remove(context.elem);
     };
   }
