@@ -92,9 +92,12 @@
       background-color: #FC673D;
     }
     &.shift-node-snap {
+      &.on>.content::before {
+        background-image: url('/assets/images/nodes/switch-on.snap.png');
+      }
       >.content::before {
         content: '\20';
-        background-image: url('/assets/images/nodes/switch.snap.png');
+        background-image: url('/assets/images/nodes/switch-off.snap.png');
         width: 35px;
         height: 22px;
         position: absolute;

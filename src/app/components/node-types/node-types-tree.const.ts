@@ -94,12 +94,12 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
     sub: [
       {
         key: 'switch',
-        label: 'Switch',
+        label: 'Switchs',
         index: 0,
         sub: [
           {
             key: 'snap',
-            label: 'Switchs',
+            label: 'Switch',
             index: 0
           }
         ]

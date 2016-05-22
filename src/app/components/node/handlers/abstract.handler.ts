@@ -8,6 +8,7 @@ export abstract class AbstractHandler {
   public type: INodeType;
 
   abstract doHandle(context: IHandlerContext): void;
+  abstract destroyFactory(context: IHandlerContext): Function;
   abstract doBuildInputOutput(model: INode);
 
   handle(context: IHandlerContext): void {
@@ -19,6 +20,8 @@ export abstract class AbstractHandler {
       }
 
       this.doHandle(context);
+      // 绑定$destroy
+      context.scope.$on('$destroy', this.destroyFactory(context));
     } else {
       if (!this.next) {
         throw 'No available handler for: ' + JSON.stringify(context.model.type);

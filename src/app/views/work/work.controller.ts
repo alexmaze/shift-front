@@ -2,6 +2,8 @@
 import { INode } from './../../models/node.model.ts';
 import { IWorkScope } from './../../models/work.scope.ts';
 
+declare let window: {workScope: any}
+
 export class WorkController {
 
   public model: INode[];
@@ -13,6 +15,9 @@ export class WorkController {
 
     this.model = [];
     $scope.model = this.model;
+
+    // TODO 测试专用
+    window.workScope = $scope;
 
     $scope.$on('deploy', () => {
       this.$log.log(this.model);

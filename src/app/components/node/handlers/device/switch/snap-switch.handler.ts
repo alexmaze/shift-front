@@ -29,11 +29,20 @@ export class SnapSwitchHandler extends AbstractHandler {
   }
 
   doHandle(context: IHandlerContext): void {
-
     let { logger } = context;
     logger.debug('handler and node');
 
     this.addEndPoints(context);
+    this.extraRender(context);
+  }
+
+  extraRender(context: IHandlerContext) {
+    // 点击切换图片
+    let { elem } = context;
+    elem.find('.content').bind('click', () => {
+      elem.toggleClass('on');
+    });
+    // console.log('hello');
   }
 
   addEndPoints(context: IHandlerContext) {
