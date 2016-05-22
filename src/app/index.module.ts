@@ -7,10 +7,9 @@ import { runBlock } from './index.run.ts';
 import { NODE_TYPES_TREE } from './components/node-types/node-types-tree.const.ts';
 // ---------------------------------------------------------------------------
 import { NodeHandlerService } from './components/node/node-handler.service.ts';
+import { ApiService } from './components/api/api.service.ts';
 // ---------------------------------------------------------------------------
-
 import { MainController } from './views/main/main.controller.ts';
-
 import { WorkController } from './views/work/work.controller.ts';
 import { SidebarController } from './views/work/sidebar/sidebar.controller.ts';
 import { SketchpadController } from './views/work/sketchpad/sketchpad.controller.ts';
@@ -46,15 +45,15 @@ module shiftFront {
 
     .constant('NODE_TYPES_TREE', NODE_TYPES_TREE)
 
-    .controller('MainController', MainController)
+    .service('nodeHandlerService', NodeHandlerService)
+    .service('apiService', ApiService)
 
+    .directive('shiftNode', shiftNode)
+
+    .controller('MainController', MainController)
     .controller('WorkController', WorkController)
     .controller('SidebarController', SidebarController)
     .controller('SketchpadController', SketchpadController)
     .controller('CodeboxController', CodeboxController)
-
-    .directive('shiftNode', shiftNode)
-
-    .service('nodeHandlerService', NodeHandlerService)
     ;
 }
