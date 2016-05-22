@@ -1,8 +1,13 @@
 
 .work .sidebar {
         height: 100%;
-        background: #333B3F;
+        background: none;
         overflow: auto;
+
+        i.fa {
+          width: 8px;
+          height: 12px;
+        }
 
         .label {
           display: block;
@@ -10,30 +15,48 @@
           line-height: inherit;
           text-align: left;
           font-weight: normal;
+          &:focus {
+            outline: none;
+          }
+          &:hover {
+            background: #5F7C8A;
+          }
+        }
+
+        .content {
+          overflow: hidden;
         }
 
         .firstType {
-            margin: 10px;
-            background: rgb(72, 83, 88);
+            margin: 25px 20px 5px 20px;
+            background: #445963;
+            border-radius: 5px;
+            overflow: hidden;
             >.label {
                 font-size: 14px;
                 padding: 5px 10px;
                 box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.16);
+                background: #02A8F3;
             }
         }
         .secondType {
-            margin: 0 5px;
+            margin: 5px 5px;
             >.label {
-                padding: 5px;
+                padding: 2px 5px;
+                border-radius: 2px;
+                text-shadow: 0 0 5px #3E50B4;
             }
         }
         .thirdType {
-            border: 1px solid gray;
             margin: 5px;
-            height: 40px;
+            border-radius: 2px;
+            background: #29363C;
             >.label {
                 padding: 5px;
-                color: grey;
+                color: #CED7DB;
+                &:hover {
+                  background: none;
+                }
             }
         }
 }
