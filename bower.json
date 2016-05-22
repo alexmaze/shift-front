@@ -20,7 +20,7 @@
     "angular": "~1.5.3",
     "font-awesome": "^4.6.3",
     "lodash": "^4.12.0",
-    "jsPlumb": "^2.1.1",
+    "jsPlumb": "2.1.2",
     "jquery-ui": "^1.11.4",
     "normalize-css": "normalize.css#^4.1.1",
     "angular-native-dragdrop": "^1.2.1",
@@ -42,7 +42,7 @@
     },
     "jsPlumb": {
       "main": [
-        "dist/js/jsPlumb-2.1.1-min.js"
+        "dist/js/jsPlumb-2.1.2-min.js"
       ]
     },
     "angular-ui-ace": {
