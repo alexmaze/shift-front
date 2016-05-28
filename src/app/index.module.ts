@@ -1,4 +1,6 @@
 /// <reference path="../../typings/main.d.ts" />
+/// <reference path="./index.d.ts" />
+
 
 import { config } from './index.config.ts';
 import { routerConfig } from './index.route.ts';
@@ -16,6 +18,7 @@ import { SketchpadController } from './views/work/sketchpad/sketchpad.controller
 import { CodeboxController } from './views/work/codebox/codebox.controller.ts';
 // ---------------------------------------------------------------------------
 import { shiftNode } from './components/node/node.directive.ts';
+import { rightClick } from './components/right-click/right-click.directive.ts';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -34,7 +37,8 @@ module shiftFront {
                'ui.bootstrap',
                'toastr',
                'ang-drag-drop',
-               'ui.ace'];
+               'ui.ace',
+               'ui.bootstrap.contextMenu'];
 
   angular.module('shiftFront', depns)
     .constant('malarkey', malarkey)
@@ -49,6 +53,7 @@ module shiftFront {
     .service('apiService', ApiService)
 
     .directive('shiftNode', shiftNode)
+    .directive('rightClick', rightClick)
 
     .controller('MainController', MainController)
     .controller('WorkController', WorkController)

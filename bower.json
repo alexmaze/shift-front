@@ -24,7 +24,8 @@
     "jquery-ui": "^1.11.4",
     "normalize-css": "normalize.css#^4.1.1",
     "angular-native-dragdrop": "^1.2.1",
-    "angular-ui-ace": "bower"
+    "angular-ui-ace": "bower",
+    "angular-bootstrap-contextmenu": "https://github.com/yanhao1991/ui.bootstrap.contextMenu.git#master"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

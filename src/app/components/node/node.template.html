@@ -1,5 +1,5 @@
 <div class="shift-node">
-  <div class="title">{{shiftNodeModel.label}}</div>
+  <div class="title" context-menu="menuOptions" context-menu-class="shift-node-contextmenu">{{shiftNodeModel.label}}</div>
   <div class="content">
 
     <div class="input input-{{input.port}}" ng-repeat="input in shiftNodeModel.inputs track by $index">

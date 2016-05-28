@@ -4,7 +4,12 @@ import { NodeHandlerService } from './node-handler.service.ts';
 interface IShiftNodeScope extends angular.IScope {
   shiftNodeModel: INode;
   shiftNodeJsplumb: any;
+  shiftNodeActions: {
+    onEdit: (node: INode) => void;
+    onDelete: (node: INode) => void;
+  };
   onDrop: Function;
+  menuOptions: any;
 }
 
 /* @ngInject */
@@ -18,7 +23,8 @@ export function shiftNode(
     restrict: 'E',
     scope: {
       shiftNodeModel: '=',
-      shiftNodeJsplumb: '='
+      shiftNodeJsplumb: '=',
+      shiftNodeActions: '='
     },
     templateUrl: 'app/components/node/node.template.html',
     link: function (scope: IShiftNodeScope, element: any, attr: any) {
@@ -34,6 +40,16 @@ export function shiftNode(
         logger: $log,
         scope: scope
       });
+
+      // 右键菜单
+      scope.menuOptions = [
+        ['Edit', () => {
+          scope.shiftNodeActions.onEdit(scope.shiftNodeModel)
+        }],
+        ['Delete', () => {
+          scope.shiftNodeActions.onDelete(scope.shiftNodeModel)
+        }]
+      ];
 
     }
   };

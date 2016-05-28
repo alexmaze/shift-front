@@ -25,6 +25,28 @@
     }
 }
 
+.shift-node-contextmenu {
+  >ul {
+    min-width: 80px;
+    font-size: 12px;
+    padding: 2px 1px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.9);
+    >li {
+      >a {
+        transition: .2s all;
+        padding: 2px 5px;
+        color: #BDB5B5;
+        &:hover, &:focus {
+            background-color: #333333;
+            color: #fff;
+            border-radius: 2px;
+        }
+      }
+    }
+  }
+}
+
 // 虚拟 Node
 .shift-node-virtual {
   // logic node

@@ -9,6 +9,7 @@ export class SketchpadController {
 
   public jsPlumbInstance: any;
   public model: INode[];
+  public nodeActions: any;
 
   /* @ngInject */
   constructor(
@@ -16,6 +17,15 @@ export class SketchpadController {
     private $scope: { $parent: IWorkScope }) {
 
     this.model = $scope.$parent.model;
+    this.nodeActions = {
+      onEdit: (node: INode) => {
+        $log.debug('TODO: edit', node);
+      },
+      onDelete: (node: INode) => {
+        _.pull(this.model, node);
+      }
+    };
+
     this.bind();
   }
 
