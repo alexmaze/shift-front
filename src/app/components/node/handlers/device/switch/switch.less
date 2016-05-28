@@ -6,18 +6,37 @@
     background-color: #FC673D;
   }
   &.shift-node-snap {
-    &.on>.content::before {
-      background-image: url('/assets/images/nodes/switch-on.snap.png');
+    &.on .content::before {
+      background-color: #152329;
     }
-    >.content::before {
+    .content::before {
+      transition: .2s all;
       content: '\20';
-      background-image: url('/assets/images/nodes/switch-off.snap.png');
+      background-color: #D04C28;
       width: 35px;
       height: 22px;
+      border-radius: 11px;
       position: absolute;
       background-size: 35px 22px;
       top: 20px;
       left: 8px;
     }
+    &.on .content::after {
+      left: 22px;
+    }
+    .content::after {
+      transition: .2s all;
+      content: '\20';
+      background-color: #ffffff;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      position: absolute;
+      background-size: 35px 22px;
+      top: 21px;
+      left: 9px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.26);
+    }
+
   }
 }
