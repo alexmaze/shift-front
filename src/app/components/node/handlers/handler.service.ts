@@ -1,17 +1,17 @@
-import { AbstractHandler } from './handlers/abstract.handler.ts';
+import { AbstractHandler } from './abstract.handler.ts';
 
-import { AndHandler } from './handlers/virtual/logic/and.handler.ts';
-import { OrHandler } from './handlers/virtual/logic/or.handler.ts';
-import { NotHandler } from './handlers/virtual/logic/not.handler.ts';
-import { ConditionalHandler } from './handlers/virtual/logic/conditional.handler.ts';
-
-
-import { ArithmeticHandler } from './handlers/virtual/operator/arithmetic.handler.ts';
-import { BitwizeHandler } from './handlers/virtual/operator/bitwise.handler.ts';
-import { CompoundHandler } from './handlers/virtual/operator/compound.handler.ts';
+import { AndHandler } from './virtual/logic/and.handler.ts';
+import { OrHandler } from './virtual/logic/or.handler.ts';
+import { NotHandler } from './virtual/logic/not.handler.ts';
+import { ConditionalHandler } from './virtual/logic/conditional.handler.ts';
 
 
-import { SnapSwitchHandler } from './handlers/device/switch/snap-switch.handler.ts';
+import { ArithmeticHandler } from './virtual/operator/arithmetic.handler.ts';
+import { BitwizeHandler } from './virtual/operator/bitwise.handler.ts';
+import { CompoundHandler } from './virtual/operator/compound.handler.ts';
+
+
+import { SnapSwitchHandler } from './device/switch/snap-switch.handler.ts';
 
 type IHandlerContext = shift.node.IHandlerContext;
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import { INodeTypeLeaf } from './../../../components/node-types/node-types-tree.const.ts';
+import { INodeTypeLeaf } from './node-types-tree.const.ts';
 
 type INodeType = shift.node.INodeType;
 

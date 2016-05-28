@@ -6,9 +6,9 @@ import { config } from './index.config.ts';
 import { routerConfig } from './index.route.ts';
 import { runBlock } from './index.run.ts';
 // ---------------------------------------------------------------------------
-import { NODE_TYPES_TREE } from './components/node-types/node-types-tree.const.ts';
+import { NODE_TYPES_TREE } from './views/work/sidebar/node-types-tree.const.ts';
 // ---------------------------------------------------------------------------
-import { NodeHandlerService } from './components/node/node-handler.service.ts';
+import { NodeHandlerService } from './components/node/handlers/handler.service.ts';
 import { ApiService } from './components/api/api.service.ts';
 // ---------------------------------------------------------------------------
 import { MainController } from './views/main/main.controller.ts';

@@ -1,4 +1,4 @@
-import { NodeHandlerService } from './node-handler.service.ts';
+import { NodeHandlerService } from './handlers/handler.service.ts';
 
 type INode = shift.node.INode;
 

@@ -103,6 +103,21 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
             index: 0
           }
         ]
+      }, {
+        key: 'module',
+        label: 'Modules',
+        index: 0,
+        sub: [
+          {
+            key: 'rgb',
+            label: 'RGB',
+            index: 0
+          }, {
+            key: 'servo',
+            label: 'Servo',
+            index: 0
+          }
+        ]
       }
     ]
   }
