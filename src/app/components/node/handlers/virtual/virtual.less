@@ -1,0 +1,49 @@
+
+// 虚拟 Node
+.shift-node-virtual {
+  // logic node
+  &.shift-node-logic {
+
+    width: 90px;
+    height: 60px;
+    .content {
+      height: 40px;
+    }
+
+    &.shift-node-and {
+
+    }
+    &.shift-node-or {
+
+    }
+    &.shift-node-not {
+      height: 46px;
+      .content {
+        height: 26px;
+      }
+    }
+    &.shift-node-conditional {
+
+    }
+  }
+  // operate nodes
+  &.shift-node-operator {
+    >.title {
+      background-color: #0088F9;
+    }
+    .input, .output {
+      position: absolute;
+    }
+    .input-0 {
+      top: 8px;
+      left: 17px;
+    }
+    .input-1 {
+      top: 19px;
+      left: 17px;
+    }
+    &.shift-node-arithmetic {
+      // background: black;
+    }
+  }
+}

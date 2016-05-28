@@ -1,0 +1,23 @@
+.shift-node-device.shift-node-switch {
+  >.title {
+    background-color: #CF4623;
+  }
+  >.content {
+    background-color: #FC673D;
+  }
+  &.shift-node-snap {
+    &.on>.content::before {
+      background-image: url('/assets/images/nodes/switch-on.snap.png');
+    }
+    >.content::before {
+      content: '\20';
+      background-image: url('/assets/images/nodes/switch-off.snap.png');
+      width: 35px;
+      height: 22px;
+      position: absolute;
+      background-size: 35px 22px;
+      top: 20px;
+      left: 8px;
+    }
+  }
+}

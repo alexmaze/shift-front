@@ -1,6 +1,8 @@
 <div class="shift-node">
   <div class="title" context-menu="menuOptions" context-menu-class="shift-node-contextmenu">{{shiftNodeModel.label}}</div>
-  <div class="content">
+
+  <!-- 普通 Node -->
+  <div class="content" ng-if="shiftNodeModel.type.secondary != 'module'">
 
     <div class="input input-{{input.port}}" ng-repeat="input in shiftNodeModel.inputs track by $index">
       <span class="title">{{input._label}}</span>
@@ -10,5 +12,21 @@
     <div class="output output-{{output.port}}" ng-repeat="output in shiftNodeModel.outputs track by $index">
       <span class="title">{{output._label}}</span>
     </div>
+
   </div>
+
+  <!-- Module Node -->
+  <div class="content" ng-if="shiftNodeModel.type.secondary == 'module'">
+
+    <div class="input input-{{input.port}}" ng-repeat="input in shiftNodeModel.inputs track by $index">
+      <span class="title">{{input._label}}</span>
+      <span class="value">{{input.type == 'const' ? input.constValue : ''}}</span>
+    </div>
+
+    <div class="output output-{{output.port}}" ng-repeat="output in shiftNodeModel.outputs track by $index">
+      <span class="title">{{output._label}}</span>
+    </div>
+
+  </div>
+
 </div>

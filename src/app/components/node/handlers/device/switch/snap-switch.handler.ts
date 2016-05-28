@@ -51,10 +51,13 @@ export class SnapSwitchHandler extends AbstractHandler {
 
   extraRender(context: IHandlerContext) {
     // 点击切换图片
-    let { elem } = context;
-    elem.find('.content').bind('click', () => {
-      elem.toggleClass('on');
-    });
+    setTimeout(() => {
+
+      let { elem } = context;
+      elem.find('.content').bind('click', () => {
+        elem.toggleClass('on');
+      });
+    }, 0);
     // console.log('hello');
   }
 

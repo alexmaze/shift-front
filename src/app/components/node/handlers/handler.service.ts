@@ -1,17 +1,19 @@
 import { AbstractHandler } from './abstract.handler.ts';
 
+// virtual logic
 import { AndHandler } from './virtual/logic/and.handler.ts';
 import { OrHandler } from './virtual/logic/or.handler.ts';
 import { NotHandler } from './virtual/logic/not.handler.ts';
 import { ConditionalHandler } from './virtual/logic/conditional.handler.ts';
-
-
+// virtual operator
 import { ArithmeticHandler } from './virtual/operator/arithmetic.handler.ts';
 import { BitwizeHandler } from './virtual/operator/bitwise.handler.ts';
 import { CompoundHandler } from './virtual/operator/compound.handler.ts';
 
-
+// device switch
 import { SnapSwitchHandler } from './device/switch/snap-switch.handler.ts';
+// device module
+import { RgbModuleHandler } from './device/module/rgb.handler.ts';
 
 type IHandlerContext = shift.node.IHandlerContext;
 
@@ -31,6 +33,7 @@ export class NodeHandlerService {
         .newHandler(new CompoundHandler())
 
         .newHandler(new SnapSwitchHandler())
+        .newHandler(new RgbModuleHandler())
         ;
   }
 

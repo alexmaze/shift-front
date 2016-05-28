@@ -1,0 +1,35 @@
+// rgb module
+.shift-node-device.shift-node-module {
+  height: auto;
+  >.title {
+    background-color: #000000;
+  }
+  >.content {
+    background-color: #15171B;
+    height: auto;
+    position: relative;
+    min-height: 80px;
+  }
+  &.shift-node-rgb {
+    .content {
+      &::before {
+        content: '\20';
+        background-color: #747320;
+        box-shadow: 0 0 30px #747320;
+        transition: .2s all;
+        border-radius: 10px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 26px;
+        left: 43px;
+      }
+    }
+    &.on>.content{
+      &::before {
+        background-color: #fffc00;
+        box-shadow: 0 0 30px #fffc00;
+      }
+    }
+  }
+}

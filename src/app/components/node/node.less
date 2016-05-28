@@ -3,7 +3,6 @@
     width: 90px;
     height: 60px;
     border: 0;
-    background-color: #ffffff;
     border-radius: 6px;
     overflow: hidden;
     z-index: 1;
@@ -22,6 +21,7 @@
         height: 40px;
         color: black;
         font: normal 9px Helvetica;
+        background-color: #ffffff;
     }
 }
 
@@ -42,90 +42,6 @@
             color: #fff;
             border-radius: 2px;
         }
-      }
-    }
-  }
-}
-
-// 虚拟 Node
-.shift-node-virtual {
-  // logic node
-  &.shift-node-logic {
-
-    width: 90px;
-    height: 60px;
-    .content {
-      height: 40px;
-    }
-
-    &.shift-node-and {
-
-    }
-    &.shift-node-or {
-
-    }
-    &.shift-node-not {
-      height: 46px;
-      .content {
-        height: 26px;
-      }
-    }
-    &.shift-node-conditional {
-
-    }
-  }
-  // operate nodes
-  &.shift-node-operator {
-    >.title {
-      background-color: #0088F9;
-    }
-    .input, .output {
-      position: absolute;
-    }
-    .input-0 {
-      top: 8px;
-      left: 17px;
-    }
-    .input-1 {
-      top: 19px;
-      left: 17px;
-    }
-    &.shift-node-arithmetic {
-      // background: black;
-    }
-  }
-}
-
-.shift-node-device {
-  width: 107px;
-  height: 90px;
-  >.title {
-    height: 24px;
-    line-height: 24px;
-  }
-  >.content {
-    height: 66px;
-  }
-  &.shift-node-switch {
-    >.title {
-      background-color: #CF4623;
-    }
-    >.content {
-      background-color: #FC673D;
-    }
-    &.shift-node-snap {
-      &.on>.content::before {
-        background-image: url('/assets/images/nodes/switch-on.snap.png');
-      }
-      >.content::before {
-        content: '\20';
-        background-image: url('/assets/images/nodes/switch-off.snap.png');
-        width: 35px;
-        height: 22px;
-        position: absolute;
-        background-size: 35px 22px;
-        top: 20px;
-        left: 8px;
       }
     }
   }
