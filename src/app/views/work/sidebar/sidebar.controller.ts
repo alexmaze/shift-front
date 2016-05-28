@@ -1,7 +1,8 @@
 'use strict';
 
-import { INodeType } from './../../../models/node.model.ts';
 import { INodeTypeLeaf } from './../../../components/node-types/node-types-tree.const.ts';
+
+type INodeType = shift.node.INodeType;
 
 export class SidebarController {
 

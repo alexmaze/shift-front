@@ -1,4 +1,4 @@
-import { INode } from './../../models/node.model.ts';
+type INode = shift.node.INode;
 
 export class ApiService {
 

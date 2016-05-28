@@ -1,7 +1,8 @@
 'use strict';
-import { INode } from './../../models/node.model.ts';
-import { IWorkScope } from './../../models/work.scope.ts';
 import { ApiService } from './../../components/api/api.service.ts';
+
+type INode = shift.node.INode;
+type IWorkScope = shift.views.work.IWorkScope;
 
 declare let window: { workScope: any };
 

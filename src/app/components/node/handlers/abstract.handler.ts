@@ -1,6 +1,6 @@
-import { INodeType, INode } from './../../../models/node.model.ts';
-import { IHandlerContext } from '../handlers/handler-context.model.ts';
-
+type INode = shift.node.INode;
+type INodeType = shift.node.INodeType;
+type IHandlerContext = shift.node.IHandlerContext;
 
 export abstract class AbstractHandler {
 

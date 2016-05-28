@@ -1,5 +1,6 @@
-import { INode } from './../../models/node.model.ts';
 import { NodeHandlerService } from './node-handler.service.ts';
+
+type INode = shift.node.INode;
 
 interface IShiftNodeScope extends angular.IScope {
   shiftNodeModel: INode;
@@ -44,10 +45,10 @@ export function shiftNode(
       // 右键菜单
       scope.menuOptions = [
         ['Edit', () => {
-          scope.shiftNodeActions.onEdit(scope.shiftNodeModel)
+          scope.shiftNodeActions.onEdit(scope.shiftNodeModel);
         }],
         ['Delete', () => {
-          scope.shiftNodeActions.onDelete(scope.shiftNodeModel)
+          scope.shiftNodeActions.onDelete(scope.shiftNodeModel);
         }]
       ];
 

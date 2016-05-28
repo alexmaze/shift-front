@@ -1,5 +1,4 @@
 import { AbstractHandler } from './handlers/abstract.handler.ts';
-import { IHandlerContext } from './handlers/handler-context.model.ts';
 
 import { AndHandler } from './handlers/virtual/logic/and.handler.ts';
 import { OrHandler } from './handlers/virtual/logic/or.handler.ts';
@@ -14,6 +13,7 @@ import { CompoundHandler } from './handlers/virtual/operator/compound.handler.ts
 
 import { SnapSwitchHandler } from './handlers/device/switch/snap-switch.handler.ts';
 
+type IHandlerContext = shift.node.IHandlerContext;
 
 export class NodeHandlerService {
 

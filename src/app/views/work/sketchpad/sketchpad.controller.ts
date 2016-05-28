@@ -1,7 +1,10 @@
 'use strict';
-import { INodeType, INode, INodeInput } from './../../../models/node.model.ts';
-import { IWorkScope } from './../../../models/work.scope.ts';
 import * as _ from 'lodash';
+
+type INode = shift.node.INode;
+type INodeType = shift.node.INodeType;
+type INodeInput = shift.node.INodeInput;
+type IWorkScope = shift.views.work.IWorkScope;
 
 declare let jsPlumb: any;
 
