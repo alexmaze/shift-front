@@ -42,7 +42,7 @@ export class SketchpadController {
         DragOptions: { cursor: 'pointer', zIndex: 2000 },
         PaintStyle: { strokeStyle: '#2EFDF6', lineWidth: 1 },
         EndpointStyle: {
-          radius: 4
+          radius: 3
         },
         HoverPaintStyle: { strokeStyle: '#7073EB' },
         EndpointHoverStyle: { fillStyle: '#7073EB' },
