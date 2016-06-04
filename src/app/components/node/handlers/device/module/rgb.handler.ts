@@ -212,13 +212,8 @@ export class RgbModuleHandler extends AbstractHandler {
     let { logger } = context;
     logger.debug('handler and node');
 
-    setTimeout(() => {
-      this.addStaticEndPoints(context);
-      this.extraRender(context);
-    }, 0);
-    setTimeout(() => {
-      this.addDynamicEndPoints(context);
-    }, 0);
+    this.addEndPoints(context);
+    this.extraRender(context);
   }
 
   destroyFactory(context: IHandlerContext): Function {
@@ -246,28 +241,17 @@ export class RgbModuleHandler extends AbstractHandler {
         let activeInput = this.getActiveSubInput(context);
         activeInput.constValue = false;
         input.constValue = true;
-
-        let oldSubElem = elem.find('.input-' + activeInput.port + ' .sub')[0];
-        // update endpoints
-        debugger;
-        context.instance.remove($(oldSubElem));
-        setTimeout(() => {
-          // debugger;
-          this.addDynamicEndPoints(context);
-          // this.addStaticEndPoints(context);
-        }, 0);
+        // todo update endpoints
       }
     });
   }
 
-  addStaticEndPoints(context: IHandlerContext) {
+  addEndPoints(context: IHandlerContext) {
     let { instance, elem, model } = context;
-
     // input port on
-    let subElem = elem.find('.input-on .main')[0];
-    instance.addEndpoint(subElem, {
+    instance.addEndpoint(elem, {
       uuid: model.id + '-input-on',
-      anchor: [0.03, 0.45, 0, 0],
+      anchor: [0.09, 4.4, 0, 0],
       cssClass: 'NodePort',
       endpoint: 'Dot',
       maxConnections: -1,
@@ -275,27 +259,22 @@ export class RgbModuleHandler extends AbstractHandler {
       isTarget: true
     });
 
-  }
-  addDynamicEndPoints(context: IHandlerContext) {
-    let { instance, elem, model } = context;
-    // add sub inputs
+    // bind sub inputs
     let activeInput = this.getActiveSubInput(context);
-    let subElem = elem.find('.input-' + activeInput.port + ' .sub')[0];
-
-    let startPos = 0.5;
+    let startPos = 6.15;
     for (let sub of activeInput.sub) {
-      let x = instance.addEndpoint(subElem, {
+      instance.addEndpoint(elem, {
         uuid: model.id + '-input-' + activeInput.port + '-' + sub.port,
-        anchor: [0.03, startPos, 0, 0],
+        anchor: [0.09, startPos, 0, 0],
         cssClass: 'NodePort',
         endpoint: 'Dot',
         maxConnections: -1,
         isSource: false,
         isTarget: true
       });
-      // debugger;
-      startPos += 1;
+      startPos += 0.54;
     }
+
   }
 
   private getActiveSubInput(context: IHandlerContext) {

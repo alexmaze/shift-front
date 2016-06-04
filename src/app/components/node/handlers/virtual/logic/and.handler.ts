@@ -58,9 +58,7 @@ export class AndHandler extends AbstractHandler {
     let { logger } = context;
     logger.debug('handler and node');
 
-    setTimeout(() => {
-      this.addEndPoints(context);
-    }, 0);
+    this.addEndPoints(context);
   }
 
   destroyFactory(context: IHandlerContext): Function {
@@ -71,7 +69,6 @@ export class AndHandler extends AbstractHandler {
   }
 
   addEndPoints(context: IHandlerContext) {
-    debugger;
     let { instance, elem, model } = context;
 
     // input port 1
