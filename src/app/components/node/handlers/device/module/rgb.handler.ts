@@ -234,22 +234,28 @@ export class RgbModuleHandler extends AbstractHandler {
       elem.find('.example').bind('click', () => {
         elem.find('.example').toggleClass('on');
       });
-      //
+      // 绑定选项卡事件
+      context.scope.selectInput = (input: shift.node.INodeInput) => {
+        context.logger.debug('input section seleted:', input);
+        // update model
+        // update endpoints
+      }
     });
   }
 
   addEndPoints(context: IHandlerContext) {
-    // let { instance, elem, model } = context;
-    // // output port 1
-    // instance.addEndpoint(elem, {
-    //   uuid: model.id + '-output-0',
-    //   anchor: [0.9, 0.60, 0, 0],
-    //   cssClass: 'NodePort',
-    //   endpoint: 'Dot',
-    //   maxConnections: -1,
-    //   isSource: true,
-    //   isTarget: false
-    // });
+    let { instance, elem, model } = context;
+    // input port on
+    instance.addEndpoint(elem, {
+      uuid: model.id + '-input-on',
+      anchor: [0.1, 4.5, 0, 0],
+      cssClass: 'NodePort',
+      endpoint: 'Dot',
+      maxConnections: -1,
+      isSource: false,
+      isTarget: true
+    });
+
   }
 
 }

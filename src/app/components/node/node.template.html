@@ -44,7 +44,7 @@
         </div>
 
         <!-- 未选中的情况 -->
-        <div class="input-inner has-sub-close" ng-if="input.sub && !input.constValue">
+        <div class="input-inner has-sub-close" ng-if="input.sub && !input.constValue" ng-click="selectInput(input)">
           <div class="main">
             <div class="title">{{input._label}}</div>
           </div>
