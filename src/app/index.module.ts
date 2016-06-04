@@ -19,6 +19,7 @@ import { CodeboxController } from './views/work/codebox/codebox.controller.ts';
 // ---------------------------------------------------------------------------
 import { shiftNode } from './components/node/node.directive.ts';
 import { rightClick } from './components/right-click/right-click.directive.ts';
+import { sortInputFilter } from './components/sort-input-filter/sort-input.filter.ts';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -48,6 +49,7 @@ module shiftFront {
     .run(runBlock)
 
     .constant('NODE_TYPES_TREE', NODE_TYPES_TREE)
+    .filter('sortInputFilter', sortInputFilter)
 
     .service('nodeHandlerService', NodeHandlerService)
     .service('apiService', ApiService)

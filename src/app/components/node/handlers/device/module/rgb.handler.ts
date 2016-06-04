@@ -30,7 +30,7 @@ export class RgbModuleHandler extends AbstractHandler {
       }, {
         port: 'color',
         type: 'const',    // 此选项只能为固定值
-        constValue: true, // 选中即开启
+        constValue: false, // 选中即开启
         valueType: 'boolean',
         _label: 'Color',
         sub: [
@@ -114,7 +114,7 @@ export class RgbModuleHandler extends AbstractHandler {
       }, {
         port: 'gradient',
         type: 'const',
-        constValue: false,
+        constValue: true,
         valueType: 'boolean',
         _label: 'Gradient',
         sub: [
@@ -161,7 +161,7 @@ export class RgbModuleHandler extends AbstractHandler {
         type: 'const',
         constValue: false,
         valueType: 'boolean',
-        _label: 'Blink',
+        _label: 'Multicolor blink',
         sub: [
           {
             port: 'amount',
@@ -235,10 +235,13 @@ export class RgbModuleHandler extends AbstractHandler {
         elem.find('.example').toggleClass('on');
       });
       // 绑定选项卡事件
-      context.scope.selectInput = (input: shift.node.INodeInput) => {
+      context.scope.selectSubInput = (input: shift.node.INodeInput) => {
         context.logger.debug('input section seleted:', input);
         // update model
-        // update endpoints
+        let activeInput = this.getActiveSubInput(context);
+        activeInput.constValue = false;
+        input.constValue = true;
+        // todo update endpoints
       }
     });
   }
@@ -256,6 +259,31 @@ export class RgbModuleHandler extends AbstractHandler {
       isTarget: true
     });
 
+    // bind sub inputs
+    let activeInput = this.getActiveSubInput(context);
+    let startPos = 6.2;
+    for (let sub of activeInput.sub) {
+      instance.addEndpoint(elem, {
+        uuid: model.id + '-input-' + activeInput.port + '-' + sub.port,
+        anchor: [0.1, startPos, 0, 0],
+        cssClass: 'NodePort',
+        endpoint: 'Dot',
+        maxConnections: -1,
+        isSource: false,
+        isTarget: true
+      });
+      startPos += 0.54;
+    }
+
+  }
+
+  private getActiveSubInput(context: IHandlerContext) {
+    for (let input of context.model.inputs) {
+      if (input.sub && input.sub.length > 0 && input.constValue) {
+        return input;
+      }
+    }
+    throw new Error('can not find active sub input');
   }
 
 }

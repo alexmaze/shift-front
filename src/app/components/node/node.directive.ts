@@ -11,6 +11,7 @@ interface IShiftNodeScope extends angular.IScope {
   };
   onDrop: Function;
   menuOptions: any;
+  order: any;
 }
 
 /* @ngInject */
@@ -51,6 +52,8 @@ export function shiftNode(
           scope.shiftNodeActions.onDelete(scope.shiftNodeModel);
         }]
       ];
+
+      scope.order = 'type';
 
     }
   };
