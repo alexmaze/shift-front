@@ -18,13 +18,39 @@
   <!-- Module Node -->
   <div class="content" ng-if="shiftNodeModel.type.secondary == 'module'">
 
-    <div class="input input-{{input.port}}" ng-repeat="input in shiftNodeModel.inputs track by $index">
-      <span class="title">{{input._label}}</span>
-      <span class="value">{{input.type == 'const' ? input.constValue : ''}}</span>
-    </div>
+    <div class="example"></div>
 
-    <div class="output output-{{output.port}}" ng-repeat="output in shiftNodeModel.outputs track by $index">
-      <span class="title">{{output._label}}</span>
+    <div class="input-section">
+      <div class="input input-{{input.port}} {{((input.type == 'const') && input.constValue) || (input.type == 'ref') ? 'on' : 'off'}}"
+           ng-repeat="input in shiftNodeModel.inputs track by $index">
+
+        <!-- 无子输入情况 -->
+        <div class="input-inner no-sub" ng-if="!input.sub">
+          <div class="main">
+            <div class="title">{{input._label}}</div>
+            <div class="value">{{input.type == 'const' ? input.constValue : ''}}</div>
+          </div>
+        </div>
+
+        <!-- 选中的情况 -->
+        <div class="input-inner has-sub-open" ng-if="input.sub && input.constValue">
+          <div class="main">
+            <div class="title">{{input._label}}</div>
+          </div>
+          <div class="sub" ng-repeat="sub in input.sub track by $index">
+            <div class="title">{{sub._label}}</div>
+            <div class="value">{{sub.type == 'const' ? sub.constValue : ''}}</div>
+          </div>
+        </div>
+
+        <!-- 未选中的情况 -->
+        <div class="input-inner has-sub-close" ng-if="input.sub && !input.constValue">
+          <div class="main">
+            <div class="title">{{input._label}}</div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>

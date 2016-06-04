@@ -21,11 +21,189 @@ export class RgbModuleHandler extends AbstractHandler {
 
   doBuildInputOutput(model: INode) {
     // console.debug('build input output');
-    model.outputs = [
+    // 默认选中 color section
+    model.inputs = [
       {
-        port: 0,
-        value: undefined,
-        valueType: 'boolean'
+        port: 'on',
+        valueType: 'boolean',
+        _label: 'On'
+      }, {
+        port: 'color',
+        type: 'const',    // 此选项只能为固定值
+        constValue: true, // 选中即开启
+        valueType: 'boolean',
+        _label: 'Color',
+        sub: [
+          {
+            port: 'r',
+            type: 'const',
+            constValue: 255,
+            valueType: 'number',
+            _label: 'R'
+          }, {
+            port: 'g',
+            type: 'const',
+            constValue: 255,
+            valueType: 'number',
+            _label: 'G'
+          }, {
+            port: 'b',
+            type: 'const',
+            constValue: 255,
+            valueType: 'number',
+            _label: 'B'
+          }
+        ]
+      }, {
+        port: 'intensitywave',
+        type: 'const',
+        constValue: false,
+        valueType: 'boolean',
+        _label: 'Intensity wave',
+        sub: [
+          {
+            port: 'rate',
+            type: 'const',
+            constValue: 50,
+            valueType: 'number',
+            _label: 'rate'
+          }, {
+            port: 'velocity',
+            type: 'const',
+            constValue: 5,
+            valueType: 'number',
+            _label: 'velocity'
+          }
+        ]
+      }, {
+        port: 'multicolorwave',
+        type: 'const',
+        constValue: false,
+        valueType: 'boolean',
+        _label: 'Multicolor wave',
+        sub: [
+          {
+            port: 'rate',
+            type: 'const',
+            constValue: 50,
+            valueType: 'number',
+            _label: 'rate'
+          }, {
+            port: 'velocity',
+            type: 'const',
+            constValue: 5,
+            valueType: 'number',
+            _label: 'velocity'
+          }
+        ]
+      }, {
+        port: 'blink',
+        type: 'const',
+        constValue: false,
+        valueType: 'boolean',
+        _label: 'Blink',
+        sub: [
+          {
+            port: 'frequency',
+            type: 'const',
+            constValue: 10,
+            valueType: 'number',
+            _label: 'frequency'
+          }
+        ]
+      }, {
+        port: 'gradient',
+        type: 'const',
+        constValue: false,
+        valueType: 'boolean',
+        _label: 'Gradient',
+        sub: [
+          {
+            port: 'r',
+            type: 'const',
+            constValue: 255,
+            valueType: 'number',
+            _label: 'R'
+          }, {
+            port: 'g',
+            type: 'const',
+            constValue: 255,
+            valueType: 'number',
+            _label: 'G'
+          }, {
+            port: 'b',
+            type: 'const',
+            constValue: 255,
+            valueType: 'number',
+            _label: 'B'
+          }, {
+            port: 'min',
+            type: 'const',
+            constValue: 0,
+            valueType: 'number',
+            _label: 'min'
+          }, {
+            port: 'max',
+            type: 'const',
+            constValue: 200,
+            valueType: 'number',
+            _label: 'max'
+          }, {
+            port: 'velocity',
+            type: 'const',
+            constValue: 5,
+            valueType: 'number',
+            _label: 'velocity'
+          }
+        ]
+      }, {
+        port: 'multicolorblink',
+        type: 'const',
+        constValue: false,
+        valueType: 'boolean',
+        _label: 'Blink',
+        sub: [
+          {
+            port: 'amount',
+            type: 'const',
+            constValue: 3,
+            valueType: 'number',
+            _label: 'amount'
+          }, {
+            port: 'frequency',
+            type: 'const',
+            constValue: 10,
+            valueType: 'number',
+            _label: 'frequency'
+          }
+        ]
+      }, {
+        port: 'multicolorgradient',
+        type: 'const',
+        constValue: false,
+        valueType: 'boolean',
+        _label: 'Multicolor gradient',
+        sub: [
+          {
+            port: 'min',
+            type: 'const',
+            constValue: 0,
+            valueType: 'number',
+            _label: 'min'
+          }, {
+            port: 'max',
+            type: 'const',
+            constValue: 200,
+            valueType: 'number',
+            _label: 'max'
+          }, {
+            port: 'velocity',
+            type: 'const',
+            constValue: 5,
+            valueType: 'number',
+            _label: 'velocity'
+          }
+        ]
       }
     ];
   }
@@ -43,7 +221,7 @@ export class RgbModuleHandler extends AbstractHandler {
       context.logger.debug('destroy snap switch', context, event);
 
       // 解绑额外添加的事件
-      context.elem.find('.content').unbind('click');
+      context.elem.find('.example').unbind('click');
 
       context.instance.remove(context.elem);
     };
@@ -51,10 +229,12 @@ export class RgbModuleHandler extends AbstractHandler {
 
   extraRender(context: IHandlerContext) {
     setTimeout(() => {
+      // 绘制示例图
       let { elem } = context;
-      elem.find('.content').bind('click', () => {
-        elem.toggleClass('on');
+      elem.find('.example').bind('click', () => {
+        elem.find('.example').toggleClass('on');
       });
+      //
     });
   }
 

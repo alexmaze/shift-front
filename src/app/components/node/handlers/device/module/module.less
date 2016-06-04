@@ -9,27 +9,104 @@
     height: auto;
     position: relative;
     min-height: 80px;
-  }
-  &.shift-node-rgb {
-    .content {
+    .example {
+      height: 72px;
+      position: relative;
       &::before {
         content: '\20';
+        position: absolute;
+      }
+    }
+    .input-section {
+      color: #CFCFCF;
+      overflow: hidden;
+      .input {
+        overflow: hidden;
+        position: relative;
+        &.on {
+          .input-inner .main {
+            &::before {
+              background: #00FDF4;
+            }
+            .title {
+              color: #00FDF4;
+            }
+          }
+        }
+        .input-inner {
+          padding: 5px 8px 5px 8px;
+          .main, .sub {
+            &::before {
+              content: '\20';
+              height: 6px;
+              width: 6px;
+              border-radius: 3px;
+              background: #CFCFCF;
+              display: block;
+              position: absolute;
+              top: 4px;
+              left: 0;
+            }
+            position: relative;
+            padding-top: 2px;
+            display: flex;
+            justify-content: space-between;
+            height: 15px;
+            .title, .value {
+              margin: 0 0 0 10px;
+              font-size: 12px;
+              transform: scale(0.75);
+              transform-origin: 0 0;
+              letter-spacing: 0.5px;
+              display: inline-block;
+              white-space: nowrap;
+            }
+            .value {
+              color: #FD3E59;
+            }
+          }
+        }
+        .has-sub-open {
+          margin: 3px 0 2px 0;
+          .main, .sub {
+            height: 13px;
+          }
+        }
+        .has-sub-close {
+          background: linear-gradient(0deg, #15171b 0%, #202329 100%);
+          border-bottom: 1px solid #3B3E42;
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+        &:last-child {
+          .has-sub-close {
+            border-bottom: none;
+          }
+        }
+      }
+
+
+    }
+  }
+  &.shift-node-rgb {
+    .example {
+      &::before {
         background-color: #747320;
         box-shadow: 0 0 30px #747320;
         transition: .2s all;
         border-radius: 10px;
         width: 20px;
         height: 20px;
-        position: absolute;
-        top: 26px;
+        top: 25px;
         left: 43px;
       }
-    }
-    &.on>.content{
-      &::before {
+      &.on::before {
         background-color: #fffc00;
         box-shadow: 0 0 30px #fffc00;
       }
+    }
+    .input-section {
     }
   }
 }

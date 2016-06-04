@@ -49,21 +49,21 @@ declare namespace shift.node {
      */
     port: string | number;
     // 输入类型：ref/const
-    type: string;
+    type?: string;
     // ref数据来源
-    refId: string;
+    refId?: string;
     // ref数据来源端口
-    refOutputPort: string | number;
+    refOutputPort?: string | number;
     // const数据值
-    constValue: any;
+    constValue?: any;
 
     // 值
-    value: any;
+    value?: any;
     // 值类型
     valueType: string,
 
     // 子输入，主要用于模块节点，输入有其他参数
-    sub: INodeInput[];
+    sub?: INodeInput[];
 
     _label?: string;
     _connId?: string;
