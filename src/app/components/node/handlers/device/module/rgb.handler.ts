@@ -242,7 +242,7 @@ export class RgbModuleHandler extends AbstractHandler {
         activeInput.constValue = false;
         input.constValue = true;
         // todo update endpoints
-      }
+      };
     });
   }
 
