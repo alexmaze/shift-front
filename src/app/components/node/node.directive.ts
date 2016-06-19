@@ -54,12 +54,6 @@ export function shiftNode(
         }]
       ];
 
-      scope.order = 'type';
-
-      scope.nodeInputOrder = (param, param2, param3) => {
-        // debugger;
-      }
-
     }
   };
 }

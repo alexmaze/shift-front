@@ -121,7 +121,8 @@ export class SketchpadController {
     return {
       id: uuidArr[0],
       portType: uuidArr[1],
-      portIndex: uuidArr[2]
+      portIndex: uuidArr[2],
+      portSubIndex: uuidArr[3]
     };
   }
 
@@ -131,7 +132,7 @@ export class SketchpadController {
       // context.$log.debug(sourceModal, targetModal);
 
       /* tslint:disable */
-      let targetInput = _.find(targetModal.inputs, (input: INodeInput) => { return input.port == target.portIndex; });
+      let targetInput = this.findInput(targetModal.inputs, target);
       // context.$log.debug(targetInput);
 
       if (targetInput._connId != connection.id) {
@@ -151,7 +152,7 @@ export class SketchpadController {
       // context.$log.debug(sourceModal, targetModal);
 
       /* tslint:disable */
-      let targetInput = _.find(targetModal.inputs, (input: INodeInput) => { return input.port == target.portIndex; });
+      let targetInput = this.findInput(targetModal.inputs, target);
       // context.$log.debug(targetInput);
 
       if (targetInput._connId) {
@@ -170,11 +171,21 @@ export class SketchpadController {
       targetInput._connId = connection.id;
   }
 
-}
+  findInput(inputs: shift.node.INodeInput[], endpoint: IEndpoint): shift.node.INodeInput {
+    // debugger;
+    let input = _.find(inputs, (input: INodeInput) => input.port == endpoint.portIndex);
+    if (endpoint.portSubIndex === undefined) {
+      return input;
+    }
+    return _.find(input.sub, (input: INodeInput) => input.port == endpoint.portSubIndex);
+  }
 
+
+}
 
 interface IEndpoint {
   id: string;
   portType: string;
   portIndex: string | number;
+  portSubIndex: string | number;
 }

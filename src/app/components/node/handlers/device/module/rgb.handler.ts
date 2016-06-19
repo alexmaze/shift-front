@@ -1,5 +1,5 @@
 import { AbstractHandler } from './../../abstract.handler.ts';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 
 type INode = shift.node.INode;
 type INodeType = shift.node.INodeType;
@@ -296,7 +296,7 @@ export class RgbModuleHandler extends AbstractHandler {
 
   removeEndPointsSub(preInput: shift.node.INodeInput, context: IHandlerContext) {
     // console.debug('remove', preInput, context);
-    let { instance, elem, model } = context;
+    let { instance, model } = context;
 
     for (let sub of preInput.sub) {
       let uuid = model.id + '-input-' + preInput.port + '-' + sub.port;
