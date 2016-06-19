@@ -1,4 +1,5 @@
 import { AbstractHandler } from './../../abstract.handler.ts';
+import * as _ from 'lodash';
 
 type INode = shift.node.INode;
 type INodeType = shift.node.INodeType;
@@ -212,7 +213,10 @@ export class RgbModuleHandler extends AbstractHandler {
     let { logger } = context;
     logger.debug('handler and node');
 
-    this.addEndPoints(context);
+    this.sortInputs(context);
+
+    this.addEndPointsOn(context);
+    this.addEndPointsSub(context);
     this.extraRender(context);
   }
 
@@ -242,11 +246,20 @@ export class RgbModuleHandler extends AbstractHandler {
         activeInput.constValue = false;
         input.constValue = true;
         // todo update endpoints
+
+
+        this.sortInputs(context);
+
+        setTimeout(() => {
+          this.removeEndPointsSub(activeInput, context);
+          this.addEndPointsSub(context);
+        });
+
       };
     });
   }
 
-  addEndPoints(context: IHandlerContext) {
+  addEndPointsOn(context: IHandlerContext) {
     let { instance, elem, model } = context;
     // input port on
     instance.addEndpoint(elem, {
@@ -258,6 +271,10 @@ export class RgbModuleHandler extends AbstractHandler {
       isSource: false,
       isTarget: true
     });
+  }
+
+  addEndPointsSub(context: IHandlerContext) {
+    let { instance, elem, model } = context;
 
     // bind sub inputs
     let activeInput = this.getActiveSubInput(context);
@@ -277,10 +294,39 @@ export class RgbModuleHandler extends AbstractHandler {
 
   }
 
+  removeEndPointsSub(preInput: shift.node.INodeInput, context: IHandlerContext) {
+    // console.debug('remove', preInput, context);
+    let { instance, elem, model } = context;
+
+    for (let sub of preInput.sub) {
+      let uuid = model.id + '-input-' + preInput.port + '-' + sub.port;
+      // console.log('uuid:', );
+      instance.deleteEndpoint(uuid);
+    }
+  }
+
+  sortInputs(context: IHandlerContext) {
+    let inputs = context.model.inputs;
+
+    let activedInputIndex = this.getActiveSubInputIndex(context);
+    let tmp = inputs[1];
+    inputs[1] = inputs[activedInputIndex];
+    inputs[activedInputIndex] = tmp;
+  }
+
   private getActiveSubInput(context: IHandlerContext) {
     for (let input of context.model.inputs) {
       if (input.sub && input.sub.length > 0 && input.constValue) {
         return input;
+      }
+    }
+    throw new Error('can not find active sub input');
+  }
+  private getActiveSubInputIndex(context: IHandlerContext) {
+    for (let i = 0; i < context.model.inputs.length; i++) {
+      let input = context.model.inputs[i];
+      if (input.sub && input.sub.length > 0 && input.constValue) {
+        return i;
       }
     }
     throw new Error('can not find active sub input');

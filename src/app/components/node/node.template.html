@@ -21,7 +21,7 @@
     <div class="example"></div>
     <div class="input-section">
       <div class="input input-{{input.port}} {{((input.type == 'const') && input.constValue) || (input.type == 'ref') ? 'on' : 'off'}}"
-           ng-repeat="input in shiftNodeModel.inputs | orderBy: ['-type', '-constValue'] track by input.port">
+           ng-repeat="input in shiftNodeModel.inputs track by input.port">
 
         <!-- 无子输入情况 -->
         <div class="input-inner no-sub" ng-if="!input.sub">
