@@ -14,29 +14,42 @@
 
     <div class="tabs-content" ng-show="sidebar.currentTab == 'toolbox'">
       <div class="search-box">
-        <input type="text" placeholder="Search Node">
+        <input type="text" placeholder="Search Node" ng-model="sidebar.filter">
       </div>
-      <div class="list" ng-repeat="first in sidebar.NODE_TYPES_TREE track by $index">
-
-          <div class="type" ng-repeat="second in first.sub">
-            <div class="title" ng-click="second.isCollapsed = !second.isCollapsed">
-              <span>{{second.label}}</span>
-              <i class="fa fa-caret-down" ng-show="!second.isCollapsed"></i>
-              <i class="fa fa-caret-up" ng-show="second.isCollapsed"></i>
-            </div>
-            <div class="sub-list clearfix" uib-collapse="!second.isCollapsed">
-              <div class="item node-logo" ng-repeat="third in second.sub">
-                <div class="item-image node-logo"
-                  ng-class="third.key"
-                  ui-draggable="true"
-                  drag="sidebar.getNodeType(first, second, third)"
-                  on-drop-success="sidebar.onDragSuccess($event, $index, third)"
-                  drag-channel="WORK"></div>
-                <div class="item-title">{{third.label}}</div>
-              </div>
+      <div class="list" ng-show="!sidebar.filter" ng-repeat="first in sidebar.NODE_TYPES_TREE track by $index">
+        <div class="type" ng-repeat="second in first.sub">
+          <div class="title" ng-click="second.isCollapsed = !second.isCollapsed">
+            <span>{{second.label}}</span>
+            <i class="fa fa-caret-down" ng-show="!second.isCollapsed"></i>
+            <i class="fa fa-caret-up" ng-show="second.isCollapsed"></i>
+          </div>
+          <div class="sub-list clearfix" uib-collapse="!second.isCollapsed">
+            <div class="item node-logo" ng-repeat="third in second.sub">
+              <div class="item-image node-logo"
+                ng-class="third.key"
+                ui-draggable="true"
+                drag="sidebar.getNodeType(first, second, third)"
+                on-drop-success="sidebar.onDragSuccess($event, $index, third)"
+                drag-channel="WORK"></div>
+              <div class="item-title">{{third.label}}</div>
             </div>
           </div>
-
+        </div>
+      </div>
+      <div class="list results" ng-show="!(!sidebar.filter)" ng-repeat="first in sidebar.NODE_TYPES_TREE track by $index">
+        <div class="type" ng-repeat="second in first.sub">
+          <div class="sub-list clearfix">
+            <div class="item node-logo" ng-repeat="third in second.sub | filter:sidebar.filter">
+              <div class="item-image node-logo"
+                ng-class="third.key"
+                ui-draggable="true"
+                drag="sidebar.getNodeType(first, second, third)"
+                on-drop-success="sidebar.onDragSuccess($event, $index, third)"
+                drag-channel="WORK"></div>
+              <div class="item-title">{{third.label}}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="tabs-content" ng-show="sidebar.currentTab == 'example'">

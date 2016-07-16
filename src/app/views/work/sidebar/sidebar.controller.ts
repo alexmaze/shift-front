@@ -11,6 +11,7 @@ export class SidebarController {
     avatarUrl: string;
   };
   currentTab: string = 'toolbox';
+  filter: string;
 
   /* @ngInject */
   constructor(

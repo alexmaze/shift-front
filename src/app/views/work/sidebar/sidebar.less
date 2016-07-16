@@ -66,11 +66,15 @@
       text-align: center;
       .tab {
         margin: 0 20px;
+        transition: .2s color;
         &:hover {
           text-decoration: none;
         }
         &.active {
           color: #23fef3;
+        }
+        &:hover {
+          color: #b1b1b1;
         }
       }
     }
@@ -100,6 +104,10 @@
             font-weight: bold;
             font-size: 14px;
             padding: 0 7px;
+            transition: .2s color;
+            &:hover {
+              color: #b1b1b1;
+            }
             i.fa {
               float: right;
             }

@@ -96,7 +96,7 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
           },
           {
             key: 'bitwise',
-            label: 'bitwise',
+            label: 'Bitwise',
             index: 2
           }
         ]
