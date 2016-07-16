@@ -14,7 +14,7 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
     sub: [
       {
         key: 'logic',
-        label: 'Logic Patches',
+        label: 'Logic',
         index: 0,
         sub: [
           {
@@ -41,13 +41,13 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
       },
       {
         key: 'control',
-        label: 'Control Flow Patches',
+        label: 'Control Flow',
         index: 1,
         sub: []
       },
       {
         key: 'operator',
-        label: 'Operator Patches',
+        label: 'Operator',
         index: 2,
         sub: [
           {
@@ -69,19 +69,19 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
       },
       {
         key: 'math',
-        label: 'Math Patches',
+        label: 'Math',
         index: 3,
         sub: []
       },
       {
         key: 'utility',
-        label: 'Utility Patches',
+        label: 'Utility',
         index: 4,
         sub: []
       },
       {
         key: 'data',
-        label: 'Data Patches',
+        label: 'Data',
         index: 5,
         sub: []
       }

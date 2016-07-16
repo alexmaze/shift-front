@@ -6,11 +6,22 @@ type INodeType = shift.node.INodeType;
 
 export class SidebarController {
 
+  userInfo: {
+    name: string;
+    avatarUrl: string;
+  }
+  currentTab: string = 'toolbox';
+
   /* @ngInject */
   constructor(
     private $log: angular.ILogService,
     private NODE_TYPES_TREE: any) {
     // this.$log.debug(NODE_TYPES_TREE);
+
+    this.userInfo = {
+      name: 'Fred',
+      avatarUrl: 'assets/images/avatar.png'
+    };
   }
 
   getNodeType(first: INodeTypeLeaf, second: INodeTypeLeaf, third: INodeTypeLeaf): INodeType {
