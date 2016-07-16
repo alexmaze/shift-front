@@ -9,7 +9,7 @@ export class SidebarController {
   userInfo: {
     name: string;
     avatarUrl: string;
-  }
+  };
   currentTab: string = 'toolbox';
 
   /* @ngInject */
