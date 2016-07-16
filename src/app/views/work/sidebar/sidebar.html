@@ -16,9 +16,6 @@
       <div class="search-box">
         <input type="text" placeholder="Search Node">
       </div>
-
-<!---->
-
       <div class="list" ng-repeat="first in sidebar.NODE_TYPES_TREE track by $index">
 
           <div class="type" ng-repeat="second in first.sub">
@@ -41,8 +38,6 @@
           </div>
 
       </div>
-
-<!---->
     </div>
     <div class="tabs-content" ng-show="sidebar.currentTab == 'example'">
       example

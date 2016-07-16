@@ -8,6 +8,40 @@ export interface INodeTypeLeaf {
 
 export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
   {
+    key: 'device',
+    label: 'Device Nodes',
+    index: 1,
+    sub: [
+      {
+        key: 'switch',
+        label: 'Switchs',
+        index: 0,
+        sub: [
+          {
+            key: 'snap',
+            label: 'Switch',
+            index: 0
+          }
+        ]
+      }, {
+        key: 'module',
+        label: 'Modules',
+        index: 0,
+        sub: [
+          {
+            key: 'rgb',
+            label: 'RGB',
+            index: 0
+          }, {
+            key: 'servo',
+            label: 'Servo',
+            index: 0
+          }
+        ]
+      }
+    ]
+  },
+  {
     key: 'virtual',
     label: 'Virtual Nodes',
     index: 0,
@@ -84,40 +118,6 @@ export const NODE_TYPES_TREE: INodeTypeLeaf[] = [
         label: 'Data',
         index: 5,
         sub: []
-      }
-    ]
-  },
-  {
-    key: 'device',
-    label: 'Device Nodes',
-    index: 1,
-    sub: [
-      {
-        key: 'switch',
-        label: 'Switchs',
-        index: 0,
-        sub: [
-          {
-            key: 'snap',
-            label: 'Switch',
-            index: 0
-          }
-        ]
-      }, {
-        key: 'module',
-        label: 'Modules',
-        index: 0,
-        sub: [
-          {
-            key: 'rgb',
-            label: 'RGB',
-            index: 0
-          }, {
-            key: 'servo',
-            label: 'Servo',
-            index: 0
-          }
-        ]
       }
     ]
   }

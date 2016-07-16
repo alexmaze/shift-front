@@ -10,6 +10,9 @@
       display: inline-block;
       vertical-align: middle;
       cursor: pointer;
+      &:hover {
+        text-decoration: none;
+      }
     }
     .avatar {
       width: 60px;
@@ -35,6 +38,7 @@
       top: 50%;
       right: 28px;
       margin-top: -18px;
+      transition: .2s all;
       &::after {
         content: '\20';
         position: absolute;
@@ -44,6 +48,9 @@
         left: 13px;
         background-image: url(/assets/images/arrow.png);
         background-size: contain;
+      }
+      &:hover {
+        background-color: #252a2d;
       }
     }
   }
@@ -89,30 +96,33 @@
       }
       .list {
         .type {
-          margin-bottom: 12px;
           .title {
             font-weight: bold;
             font-size: 14px;
-            padding: 0 6px;
+            padding: 0 7px;
             i.fa {
               float: right;
             }
             &:focus {
               outline: none;
             }
+            margin-bottom: 12px;
           }
 
           .sub-list {
-            padding-top: 15px;
             .item {
               float: left;
-              padding: 8px;
+              padding: 7px;
               width: 50%;
               .item-image {
                 width: 90px;
                 height: 90px;
                 background-color: #333B3F;
                 border-radius: 6px;
+                transition: .2s background-color;
+                &:hover {
+                  background-color: #252a2d;
+                }
               }
               .item-title {
                 font-size: 12px;
